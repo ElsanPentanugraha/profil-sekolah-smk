@@ -36,3 +36,9 @@ Route::get('/gallery', function () {
 Route::get('/contact', function () {
     return view('layout/contact');
 });
+
+
+// Route Admin
+Route::get('/admin-dashboard', function () {
+    return view('admin/dashboard');
+});
