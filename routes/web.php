@@ -42,3 +42,27 @@ Route::get('/contact', function () {
 Route::get('/admin-dashboard', function () {
     return view('admin/dashboard');
 });
+
+Route::get('/admin-major', function () {
+    return view('admin/major');
+});
+
+Route::get('/admin-information', function () {
+    return view('admin/information');
+});
+
+Route::get('/admin-photo-gallery', function () {
+    return view('admin/photo');
+});
+
+Route::get('/admin-video-gallery', function () {
+    return view('admin/video');
+});
+
+Route::get('/admin-contact-information', function () {
+    return view('admin/contact');
+});
+
+Route::get('/admin-user-management', function () {
+    return view('admin/user');
+});

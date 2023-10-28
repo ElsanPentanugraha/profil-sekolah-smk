@@ -35,20 +35,20 @@
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Master Data</div>
                     <a class="nav-link" href="/admin-school-profile">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fas fa-school"></i></div>
                         Kelola Profil Sekolah
                     </a>
                     <a class="nav-link" href="/admin-major">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fas fa-person-chalkboard"></i></div>
                         Kelola Jurusan
                     </a>
                     <a class="nav-link" href="/admin-information">
-                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fas fa-newspaper"></i></div>
                         Kelola Pengumuman
                     </a>
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                         data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                         Kelola Galeri
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
@@ -60,12 +60,12 @@
                         </nav>
                     </div>
                     <a class="nav-link" href="/admin-contact-information">
-                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                         Kelola Kontak
                     </a>
                     <div class="sb-sidenav-menu-heading">Admin Management</div>
-                    <a class="nav-link" href="/admin-user">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <a class="nav-link" href="/admin-user-management">
+                        <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                         User
                     </a>
                 </div>
