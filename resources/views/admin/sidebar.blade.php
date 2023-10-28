@@ -64,7 +64,7 @@
                         Kelola Kontak
                     </a>
                     <div class="sb-sidenav-menu-heading">Admin Management</div>
-                    <a class="nav-link" href="/admin-user-management">
+                    <a class="nav-link" href="/admin/user-management">
                         <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                         User
                     </a>

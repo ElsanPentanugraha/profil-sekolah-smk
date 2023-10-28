@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +64,10 @@ Route::get('/admin-contact-information', function () {
     return view('admin/contact');
 });
 
-Route::get('/admin-user-management', function () {
-    return view('admin/user');
-});
+
+Route::get('/admin/user-management', [UserController::class, 'index']);
+Route::get('/admin/add-user', [UserController::class, 'create']);
+Route::get('/admin/store-user', [UserController::class, 'store']);
+Route::get('/admin/edit-user/{id}', [UserController::class, 'edit']);
+Route::get('/admin/user-update/{id}', [UserController::class, 'update']);
+Route::get('/admin/delete-user/{id}', [UserController::class, 'delete']);
