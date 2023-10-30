@@ -13,12 +13,17 @@
                 </ol>
                 <hr>
 
+                @if (Session::has('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ Session::get('message') }}
+                    </div>
+                @endif
                 <div class="card mb-4">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <h6 class="m-0 font-weight-bold text-primary d-md-inline">Data Akun</h6>
                             <a href="/admin/add-user" class="btn btn-success btn-icon-split float-right btn-sm">
-                                <span class="icon text-white-50">
+                                <span class="icon text-white">
                                     <i class="fas fa-plus"></i>
                                 </span>
                                 <span class="text">Tambah Data</span>
@@ -44,18 +49,23 @@
                                         <td>{{ $user->password }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>
-                                            <a href="/admin/edit-user/{{ $user->id }}" class="btn btn-warning btn-icon-split btn-sm">
-                                                <span class="icon text-white-50">
+                                            <a href="/admin/edit-user/{{ $user->id }}"
+                                                class="btn btn-warning btn-icon-split btn-sm">
+                                                <span class="icon text-white">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
-                                                <span class="text">Edit</span>
+                                                <span class="text text-white">Edit</span>
                                             </a>
-                                            <a href="" class="btn btn-danger btn-icon-split btn-sm">
-                                                <span class="icon text-white-50">
-                                                    <i class="fas fa-trash"></i>
-                                                </span>
-                                                <span class="text">Hapus</span>
-                                            </a>
+                                            <form action="/admin/delete-user/{{ $user->id }}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn btn-danger btn-icon-split btn-sm">
+                                                    <span class="icon text-white">
+                                                        <i class="fas fa-trash"></i>
+                                                    </span>
+                                                    <span class="text text-white">Hapus</span>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -22,37 +22,27 @@
                                     <h4 class="text-center font-weight-light my-4">Edit Akun Pengelola</h4>
                                 </div>
                                 <div class="card-body">
-                                    <form action="user" method="post" enctype="multipart/form-data">
+                                    <form action="/admin/user-update/{{ $user->id }}" method="post">
                                         @csrf
+                                        @method('PUT')
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="username" type="text"
-                                                placeholder="Enter your first name" />
-                                            <label for="username">Username</label>
+                                            <input class="form-control" id="name" type="text" name='name'
+                                                value="{{ $user->name }}" placeholder="Username" />
+                                            <label for="name">Username</label>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="inputEmail" type="email"
-                                                placeholder="name@example.com" />
-                                            <label for="inputEmail">Email</label>
+                                            <input class="form-control" id="email" type="email" name="email"
+                                                value="{{ $user->email }}" placeholder="name@example.com" />
+                                            <label for="email">Email</label>
                                         </div>
-                                        <div class="row mb-3">
-                                            <div class="col-md-6">
-                                                <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" id="inputPassword" type="password"
-                                                        placeholder="Create a password" />
-                                                    <label for="inputPassword">Password</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" id="inputPasswordConfirm" type="password"
-                                                        placeholder="Confirm password" />
-                                                    <label for="inputPasswordConfirm">Confirm Password</label>
-                                                </div>
-                                            </div>
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="password" type="password" name="password"
+                                                placeholder="Create a password" />
+                                            <label for="password">Password</label>
                                         </div>
                                         <div class="mt-4 mb-0">
                                             <div class="d-grid">
-                                                <a class="btn btn-primary btn-block" type="submit">Simpan</a>
+                                                <button class="btn btn-primary" type="submit">Edit Akun</button>
                                             </div>
                                         </div>
                                     </form>

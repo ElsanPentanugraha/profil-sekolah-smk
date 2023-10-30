@@ -67,7 +67,7 @@ Route::get('/admin-contact-information', function () {
 
 Route::get('/admin/user-management', [UserController::class, 'index']);
 Route::get('/admin/add-user', [UserController::class, 'create']);
-Route::get('/admin/store-user', [UserController::class, 'store']);
+Route::post('/admin/store-user', [UserController::class, 'store']);
 Route::get('/admin/edit-user/{id}', [UserController::class, 'edit']);
-Route::get('/admin/user-update/{id}', [UserController::class, 'update']);
-Route::get('/admin/delete-user/{id}', [UserController::class, 'delete']);
+Route::put('/admin/user-update/{id}', [UserController::class, 'update']);
+Route::delete('/admin/delete-user/{id}', [UserController::class, 'delete']);
