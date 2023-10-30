@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MajorController;
 use App\Http\Controllers\ContactController;
 
 /*
@@ -45,9 +46,12 @@ Route::get('/admin-dashboard', function () {
     return view('admin/dashboard');
 });
 
-Route::get('/admin-major', function () {
-    return view('admin/major');
-});
+Route::get('/admin/major-management', [MajorController::class, 'index']);
+Route::get('/admin/add-major', [MajorController::class, 'create']);
+Route::post('/admin/store-major', [MajorController::class, 'store']);
+Route::get('/admin/edit-major/{id}', [MajorController::class, 'edit']);
+Route::put('/admin/major-update/{id}', [MajorController::class, 'update']);
+Route::delete('/admin/delete-major/{id}', [MajorController::class, 'delete']);
 
 Route::get('/admin-information', function () {
     return view('admin/information');

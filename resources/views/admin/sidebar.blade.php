@@ -38,7 +38,7 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-school"></i></div>
                         Kelola Profil Sekolah
                     </a>
-                    <a class="nav-link" href="/admin-major">
+                    <a class="nav-link" href="/admin/major-management">
                         <div class="sb-nav-link-icon"><i class="fas fa-person-chalkboard"></i></div>
                         Kelola Jurusan
                     </a>
