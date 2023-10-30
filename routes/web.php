@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +65,12 @@ Route::get('/admin-contact-information', function () {
     return view('admin/contact');
 });
 
+Route::get('/admin/contact-management', [ContactController::class, 'index']);
+Route::get('/admin/add-contact', [ContactController::class, 'create']);
+Route::post('/admin/store-contact', [ContactController::class, 'store']);
+Route::get('/admin/edit-contact/{id}', [ContactController::class, 'edit']);
+Route::put('/admin/contact-update/{id}', [ContactController::class, 'update']);
+Route::delete('/admin/delete-contact/{id}', [ContactController::class, 'delete']);
 
 Route::get('/admin/user-management', [UserController::class, 'index']);
 Route::get('/admin/add-user', [UserController::class, 'create']);

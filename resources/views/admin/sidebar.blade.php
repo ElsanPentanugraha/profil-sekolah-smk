@@ -59,7 +59,7 @@
                             <a class="nav-link" href="/admin-video-gallery">Video</a>
                         </nav>
                     </div>
-                    <a class="nav-link" href="/admin-contact-information">
+                    <a class="nav-link" href="/admin/contact-management">
                         <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                         Kelola Kontak
                     </a>
