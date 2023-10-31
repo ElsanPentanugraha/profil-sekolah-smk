@@ -42,21 +42,26 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-person-chalkboard"></i></div>
                         Kelola Jurusan
                     </a>
-                    <a class="nav-link" href="/admin-information">
+                    <a class="nav-link collapsed" href="" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon"><i class="fas fa-newspaper"></i></div>
                         Kelola Pengumuman
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                        data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="/admin/information-management">Pengumuman</a>
+                            <a class="nav-link" href="/admin/category-management">Kategori</a>
+                        </nav>
+                    </div>
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                         <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                         Kelola Galeri
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
-                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
-                        data-bs-parent="#sidenavAccordion">
+                    <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="/admin-photo-gallery">Gambar</a>
-                            <a class="nav-link" href="/admin-video-gallery">Video</a>
+                            <a class="nav-link" href="/admin/photo-gallery">Gambar</a>
+                            <a class="nav-link" href="/admin/video-gallery">Video</a>
                         </nav>
                     </div>
                     <a class="nav-link" href="/admin/contact-management">

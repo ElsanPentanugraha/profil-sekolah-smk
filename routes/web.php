@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MajorController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\InformationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,9 +55,14 @@ Route::get('/admin/edit-major/{id}', [MajorController::class, 'edit']);
 Route::put('/admin/major-update/{id}', [MajorController::class, 'update']);
 Route::delete('/admin/delete-major/{id}', [MajorController::class, 'delete']);
 
-Route::get('/admin-information', function () {
-    return view('admin/information');
-});
+Route::get('/admin/information-management', [InformationController::class, 'index']);
+
+Route::get('/admin/category-management', [CategoryController::class, 'index']);
+Route::get('/admin/add-category', [CategoryController::class, 'create']);
+Route::post('/admin/store-category', [CategoryController::class, 'store']);
+Route::get('/admin/edit-category/{id}', [CategoryController::class, 'edit']);
+Route::put('/admin/category-update/{id}', [CategoryController::class, 'update']);
+Route::delete('/admin/delete-category/{id}', [CategoryController::class, 'delete']);
 
 Route::get('/admin-photo-gallery', function () {
     return view('admin/photo');
