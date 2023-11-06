@@ -56,6 +56,12 @@ Route::put('/admin/major-update/{id}', [MajorController::class, 'update']);
 Route::delete('/admin/delete-major/{id}', [MajorController::class, 'delete']);
 
 Route::get('/admin/information-management', [InformationController::class, 'index']);
+Route::get('/admin/detail-information/{id}', [InformationController::class, 'show']);
+Route::get('/admin/add-information', [InformationController::class, 'create']);
+Route::post('/admin/store-information', [InformationController::class, 'store']);
+Route::get('/admin/edit-information/{id}', [InformationController::class, 'edit']);
+Route::put('/admin/information-update/{id}', [InformationController::class, 'update']);
+Route::delete('/admin/delete-information/{id}', [InformationController::class, 'delete']);
 
 Route::get('/admin/category-management', [CategoryController::class, 'index']);
 Route::get('/admin/add-category', [CategoryController::class, 'create']);
@@ -70,10 +76,6 @@ Route::get('/admin-photo-gallery', function () {
 
 Route::get('/admin-video-gallery', function () {
     return view('admin/video');
-});
-
-Route::get('/admin-contact-information', function () {
-    return view('admin/contact');
 });
 
 Route::get('/admin/contact-management', [ContactController::class, 'index']);

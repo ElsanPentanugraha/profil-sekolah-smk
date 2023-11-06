@@ -27,6 +27,16 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
     <script src="{{ asset('assets-adm/js/datatables-simple-demo.js') }}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#category').select2();
+        });
+    </script>
+
 </body>
 
 </html>

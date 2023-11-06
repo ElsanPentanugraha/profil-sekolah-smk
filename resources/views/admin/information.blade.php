@@ -21,7 +21,7 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <h6 class="m-0 font-weight-bold text-primary d-md-inline">Data Informasi Kontak</h6>
-                            <a href="/admin/add-contact" class="btn btn-success btn-icon-split float-right btn-sm">
+                            <a href="/admin/add-information" class="btn btn-success btn-icon-split float-right btn-sm">
                                 <span class="icon text-white">
                                     <i class="fas fa-plus"></i>
                                 </span>
@@ -34,45 +34,52 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Website</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>Telephone</th>
-                                    <th>Address</th>
+                                    <th>Judul</th>
+                                    <th>Penulis</th>
+                                    <th>Kategory</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($contactlist as $contact)
+                                @foreach ($informationlist as $information)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $contact->website }}</td>
-                                        <td>{{ $contact->email }}</td>
-                                        <td>{{ $contact->phone }}</td>
-                                        <td>{{ $contact->telephone }}</td>
-                                        <td>{{ $contact->address }}</td>
+                                        <td>{{ $information->name }}</td>
+                                        <td>{{ $information->write_by }}</td>
+                                        @foreach ($information->category as $item)
+                                            <td>{{ $item->name }}</td>
+                                        @endforeach
                                         <td>
-                                            <a href="/admin/edit-contact/{{ $contact->id }}"
-                                                class="btn btn-warning btn-icon-split btn-sm">
-                                                <span class="icon text-white">
-                                                    <i class="fas fa-edit"></i>
-                                                </span>
-                                                <span class="text text-white">Edit</span>
-                                            </a>
-                                            <form action="/admin/delete-contact/{{ $contact->id }}" method="post">
-                                                @csrf
-                                                @method('delete')
-                                                <button class="btn btn-danger btn-icon-split btn-sm">
+                                            <div class="d-flex">
+                                                <a href="/admin/detail-information/{{ $information->id }}"
+                                                    class="btn btn-info btn-icon-split btn-sm me-2">
                                                     <span class="icon text-white">
-                                                        <i class="fas fa-trash"></i>
+                                                        <i class="fas fa-circle-info"></i>
                                                     </span>
-                                                    <span class="text text-white">Hapus</span>
-                                                </button>
-                                            </form>
+                                                    <span class="text text-white">Detail</span>
+                                                </a>
+                                                <a href="/admin/edit-information/{{ $information->id }}"
+                                                    class="btn btn-warning btn-icon-split btn-sm me-2">
+                                                    <span class="icon text-white">
+                                                        <i class="fas fa-edit"></i>
+                                                    </span>
+                                                    <span class="text text-white">Edit</span>
+                                                </a>
+                                                <form action="/admin/delete-information/{{ $information->id }}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button class="btn btn-danger btn-icon-split btn-sm ml-2">
+                                                        <span class="icon text-white">
+                                                            <i class="fas fa-trash"></i>
+                                                        </span>
+                                                        <span class="text text-white">Hapus</span>
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
                     </div>
