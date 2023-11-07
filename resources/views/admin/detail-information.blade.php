@@ -36,14 +36,13 @@
                                 by <span>{{ $information->write_by }}</span>
                             </p>
                         </div>
-                        <div class="d-flex">
-                            <p>
+                        <div class="d-flex ">
+                            <img src="{{ asset('storage/image/' . $information->image) }}" class="img-fluid" alt="">
+                        </div>
+                        <div class="d-flex mt-3">
+                            <p class="text-justify">
                                 {{ $information->description }}
                             </p>
-                        </div>
-
-                        <div class="d-flex">
-                                {{ $information->image }}
                         </div>
                     </div>
                 </div>

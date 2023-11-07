@@ -6,6 +6,7 @@ use App\Http\Controllers\MajorController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\InformationController;
+use App\Http\Controllers\GalleryPhotoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,9 +71,10 @@ Route::get('/admin/edit-category/{id}', [CategoryController::class, 'edit']);
 Route::put('/admin/category-update/{id}', [CategoryController::class, 'update']);
 Route::delete('/admin/delete-category/{id}', [CategoryController::class, 'delete']);
 
-Route::get('/admin-photo-gallery', function () {
-    return view('admin/photo');
-});
+Route::get('/admin/photo-gallery', [GalleryPhotoController::class, 'index']);
+Route::get('/add-photos', [GalleryPhotoController::class, 'create']);
+Route::post('/upload-images', [GalleryPhotoController::class, 'store']);
+Route::delete('/delete-photo/{id}', [GalleryPhotoController::class, 'delete']);
 
 Route::get('/admin-video-gallery', function () {
     return view('admin/video');
