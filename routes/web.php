@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MajorController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
@@ -45,9 +46,7 @@ Route::get('/contact', function () {
 
 
 // Route Admin
-Route::get('/admin-dashboard', function () {
-    return view('admin/dashboard');
-});
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
 
 Route::get('/admin/major-management', [MajorController::class, 'index']);
 Route::get('/admin/add-major', [MajorController::class, 'create']);
