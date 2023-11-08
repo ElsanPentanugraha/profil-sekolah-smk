@@ -34,11 +34,11 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Master Data</div>
-                    <a class="nav-link" href="/admin-school-profile">
+                    <a class="nav-link" href="{{ url('/admin/school-profile') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-school"></i></div>
                         Kelola Profil Sekolah
                     </a>
-                    <a class="nav-link" href="/admin/major-management">
+                    <a class="nav-link" href="{{ url('/admin/major-management') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-person-chalkboard"></i></div>
                         Kelola Jurusan
                     </a>
@@ -50,7 +50,7 @@
                     <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link" href="{{ url('/admin/information-management') }}">Pengumuman</a>
-                            <a class="nav-link" href="/admin/category-management">Kategori</a>
+                            <a class="nav-link" href="{{ url('/admin/category-management') }}">Kategori</a>
                         </nav>
                     </div>
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -60,16 +60,16 @@
                     </a>
                     <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="/admin/photo-gallery">Gambar</a>
-                            <a class="nav-link" href="/admin/video-gallery">Video</a>
+                            <a class="nav-link" href="{{ url('/admin/photo-gallery') }}">Gambar</a>
+                            <a class="nav-link" href="{{ url('/admin/video-gallery') }}">Video</a>
                         </nav>
                     </div>
-                    <a class="nav-link" href="/admin/contact-management">
+                    <a class="nav-link" href="{{ url('/admin/contact-management') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                         Kelola Kontak
                     </a>
                     <div class="sb-sidenav-menu-heading">Admin Management</div>
-                    <a class="nav-link" href="/admin/user-management">
+                    <a class="nav-link" href="{{ url('/admin/user-management') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                         User
                     </a>
