@@ -29,17 +29,17 @@
                                                 placeholder="Judul" />
                                             <label for="name">Judul</label>
                                         </div>
-                                        <div class="row mb-3" >
+                                        <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-3">
-                                                    <input class="form-control" id="write_by" type="text" name='write_by'
-                                                        placeholder="Penulis" />
+                                                    <input class="form-control" id="write_by" type="text"
+                                                        name='write_by' placeholder="Penulis" />
                                                     <label for="write_by">Penulis</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-3">
-                                                    <select name="category_id" id="category" class="form-control" >
+                                                    <select name="category_id" id="category" class="form-control">
                                                         <label for="category">Kategori</label>
                                                         <option value="">Pilih Kategori</option>
                                                         @foreach ($categorylist as $item)
@@ -55,10 +55,11 @@
                                                     aria-label="Upload">
                                             </div>
                                         </div>
+
                                         <div class="form-floating mb-3">
                                             <textarea cols="30" rows="20" class="form-control" id="description" type="text" name='description'
                                                 placeholder="Deskripsi"></textarea>
-                                            <label for="description">Deskripsi</label>
+                                            
                                         </div>
                                         <div class="mt-4 mb-0">
                                             <div class="d-grid">

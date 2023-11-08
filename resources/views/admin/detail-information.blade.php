@@ -39,10 +39,11 @@
                         <div class="d-flex ">
                             <img src="{{ asset('storage/image/' . $information->image) }}" class="img-fluid" alt="">
                         </div>
-                        <div class="d-flex mt-3">
-                            <p class="text-justify">
+                        <div class="text-justify mt-3">
+                           {!! $information->description !!}
+                            {{-- <p class="text-justify">
                                 {{ $information->description }}
-                            </p>
+                            </p> --}}
                         </div>
                     </div>
                 </div>
