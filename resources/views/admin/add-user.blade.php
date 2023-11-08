@@ -8,8 +8,8 @@
             <div class="container-fluid px-4">
                 <h4 class="mt-4">Tambah Data User</h4>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a href="/admin-dashboard">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="/admin/user-management">User</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('/admin/user-management') }}">User</a></li>
                     <li class="breadcrumb-item active">Add User</li>
                 </ol>
                 <hr>

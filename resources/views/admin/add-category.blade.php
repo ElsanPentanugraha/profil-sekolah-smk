@@ -8,8 +8,8 @@
             <div class="container-fluid px-4">
                 <h4 class="mt-4">Tambah Data Kategori</h4>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a href="/admin-dashboard">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="/admin/category-management">Kategori</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('/admin/category-management') }}">Kategori</a></li>
                     <li class="breadcrumb-item active">Add Kategori</li>
                 </ol>
                 <hr>

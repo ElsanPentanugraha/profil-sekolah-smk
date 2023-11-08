@@ -8,8 +8,8 @@
             <div class="container-fluid px-4">
                 <h4 class="mt-4">Edit Data Kontak</h4>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a href="/admin-dashboard">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="/admin/contact-management">Informasi Kontak</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('/admin/contact-management') }}">Informasi Kontak</a></li>
                     <li class="breadcrumb-item active">Edit Kontak</li>
                 </ol>
                 <hr>
