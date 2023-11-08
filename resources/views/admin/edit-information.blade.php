@@ -8,7 +8,7 @@
             <div class="container-fluid px-4">
                 <h4 class="mt-4">Edit Pengumuman</h4>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a href="/admin-dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
                     <li class="breadcrumb-item"><a href="/admin/information-management">Informasi</a></li>
                     <li class="breadcrumb-item active">Edit Informasi</li>
                 </ol>
@@ -22,20 +22,20 @@
                                     <h4 class="text-center font-weight-light my-4">Edit Pengumuman</h4>
                                 </div>
                                 <div class="card-body">
-                                    <form action="/admin/information-update/{{ $category->id }}" method="post"
+                                    <form action="/admin/information-update/{{ $information->id }}" method="post"
                                         enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
                                         <div class="form-floating mb-3">
                                             <input class="form-control" id="name" type="text" name='name'
-                                                value="{{ $category->name }}" placeholder="Judul" />
+                                                value="{{ $information->name }}" placeholder="Judul" />
                                             <label for="name">Judul</label>
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" id="write_by" type="text"
-                                                        name='write_by' value="{{ $category->write_by }}"
+                                                        name='write_by' value="{{ $information->write_by }}"
                                                         placeholder="Penulis" />
                                                     <label for="write_by">Penulis</label>
                                                 </div>
@@ -62,8 +62,8 @@
                                         </div>
                                         <div class="form-floating mb-3">
                                             <textarea cols="30" rows="20" class="form-control" id="description" type="text" name='description'
-                                                placeholder="Deskripsi">{{ $category->description }}</textarea>
-                                            <label for="description">Deskripsi</label>
+                                                placeholder="Deskripsi">{!! $information->description !!}</textarea>
+                                            
                                         </div>
                                         <div class="mt-4 mb-0">
                                             <div class="d-grid">

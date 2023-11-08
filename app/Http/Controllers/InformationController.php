@@ -51,9 +51,9 @@ class InformationController extends Controller
 
     public function edit(Request $request, $id) {
         $categories = Category::all();
-        $category = Information::findOrFail($id);
+        $information = Information::findOrFail($id);
 
-        return view('admin.edit-information', ['categories' => $categories, 'category' => $category]);
+        return view('admin.edit-information', ['categories' => $categories, 'information' => $information]);
     }
 
     public function update(Request $request, $id) {
