@@ -36,7 +36,6 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Jurusan</th>
-                                    <th>Deskripsi</th>
                                     <th>Gambar</th>
                                     <th>Action</th>
                                 </tr>
@@ -46,26 +45,35 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $major->name }}</td>
-                                        <td>{{ $major->description }}</td>
                                         <td>{{ $major->image }}</td>
                                         <td>
-                                            <a href="/admin/edit-major/{{ $major->id }}"
-                                                class="btn btn-warning btn-icon-split btn-sm">
-                                                <span class="icon text-white">
-                                                    <i class="fas fa-edit"></i>
-                                                </span>
-                                                <span class="text text-white">Edit</span>
-                                            </a>
-                                            <form action="/admin/delete-major/{{ $major->id }}" method="post">
-                                                @csrf
-                                                @method('delete')
-                                                <button class="btn btn-danger btn-icon-split btn-sm">
+                                            <div class="d-flex">
+                                                <a href="/admin/detail-major/{{ $major->id }}"
+                                                    class="btn btn-info btn-icon-split btn-sm me-2">
                                                     <span class="icon text-white">
-                                                        <i class="fas fa-trash"></i>
+                                                        <i class="fas fa-circle-info"></i>
                                                     </span>
-                                                    <span class="text text-white">Hapus</span>
-                                                </button>
-                                            </form>
+                                                    <span class="text text-white">Detail</span>
+                                                </a>
+                                                <a href="/admin/edit-major/{{ $major->id }}"
+                                                    class="btn btn-warning btn-icon-split btn-sm me-2">
+                                                    <span class="icon text-white">
+                                                        <i class="fas fa-edit"></i>
+                                                    </span>
+                                                    <span class="text text-white">Edit</span>
+                                                </a>
+                                                <form action="/admin/delete-major/{{ $major->id }}" method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button class="btn btn-danger btn-icon-split btn-sm">
+                                                        <span class="icon text-white">
+                                                            <i class="fas fa-trash"></i>
+                                                        </span>
+                                                        <span class="text text-white">Hapus</span>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                            
                                         </td>
                                     </tr>
                                 @endforeach

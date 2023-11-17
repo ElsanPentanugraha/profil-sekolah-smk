@@ -59,7 +59,7 @@
                                         </div>
                                         <div class="form-floating mb-3">
                                             <textarea cols="30" rows="20" class="form-control" id="address" type="text" name='address'
-                                            placeholder="Alamat" value="{{ $contact->address }}"></textarea>
+                                            placeholder="Alamat">{!! $contact->address !!}</textarea>
                                             <label for="address">Alamat</label>
                                         </div>
                                         <div class="mt-4 mb-0">

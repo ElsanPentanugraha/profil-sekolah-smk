@@ -38,7 +38,7 @@
                                         <div class="form-floating mb-3">
                                             <textarea cols="30" rows="20" class="form-control" id="description" type="text" name='description'
                                                 placeholder="Deskripsi"></textarea>
-                                            <label for="description">Deskripsi</label>
+                                            
                                         </div>
                                         <div class="mt-4 mb-0">
                                             <div class="d-grid">

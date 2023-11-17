@@ -4,10 +4,17 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MajorController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\landingController;
+use App\Http\Controllers\AdminMajorController;
 use App\Http\Controllers\InformationController;
+use App\Http\Controllers\AdminContactController;
 use App\Http\Controllers\GalleryPhotoController;
+use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminInformationController;
+use App\Http\Controllers\AdminGalleryPhotoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,71 +27,61 @@ use App\Http\Controllers\GalleryPhotoController;
 |
 */
 
-Route::get('/', function () {
-    return view('layout/slide');
-});
+Route::get('/', [landingController::class, 'index']);
 
-Route::get('/profile', function () {
-    return view('layout/profile');
-});
+Route::get('/profile', [ProfilController::class, 'index']);
 
-Route::get('/major', function () {
-    return view('layout/major');
-});
+Route::get('/major', [MajorController::class, 'index']);
+Route::get('/major/{id}', [MajorController::class, 'show']);
 
-Route::get('/information', function () {
-    return view('layout/information');
-});
+Route::get('/information', [InformationController::class, 'index']);
+Route::get('/detail-post/{id}', [InformationController::class, 'show']);
 
-Route::get('/gallery', function () {
-    return view('layout/gallery');
-});
+Route::get('/gallery', [GalleryPhotoController::class, 'index']);
 
-Route::get('/contact', function () {
-    return view('layout/contact');
-});
-
+Route::get('/contact', [ContactController::class, 'index']);
 
 // Route Admin
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
 
-Route::get('/admin/major-management', [MajorController::class, 'index']);
-Route::get('/admin/add-major', [MajorController::class, 'create']);
-Route::post('/admin/store-major', [MajorController::class, 'store']);
-Route::get('/admin/edit-major/{id}', [MajorController::class, 'edit']);
-Route::put('/admin/major-update/{id}', [MajorController::class, 'update']);
-Route::delete('/admin/delete-major/{id}', [MajorController::class, 'delete']);
+Route::get('/admin/major-management', [AdminMajorController::class, 'index']);
+Route::get('/admin/detail-major/{id}', [AdminMajorController::class, 'show']);
+Route::get('/admin/add-major', [AdminMajorController::class, 'create']);
+Route::post('/admin/store-major', [AdminMajorController::class, 'store']);
+Route::get('/admin/edit-major/{id}', [AdminMajorController::class, 'edit']);
+Route::put('/admin/major-update/{id}', [AdminMajorController::class, 'update']);
+Route::delete('/admin/delete-major/{id}', [AdminMajorController::class, 'delete']);
 
-Route::get('/admin/information-management', [InformationController::class, 'index']);
-Route::get('/admin/detail-information/{id}', [InformationController::class, 'show']);
-Route::get('/admin/add-information', [InformationController::class, 'create']);
-Route::post('/admin/store-information', [InformationController::class, 'store']);
-Route::get('/admin/edit-information/{id}', [InformationController::class, 'edit']);
-Route::put('/admin/information-update/{id}', [InformationController::class, 'update']);
-Route::delete('/admin/delete-information/{id}', [InformationController::class, 'delete']);
+Route::get('/admin/information-management', [AdminInformationController::class, 'index']);
+Route::get('/admin/detail-information/{id}', [AdminInformationController::class, 'show']);
+Route::get('/admin/add-information', [AdminInformationController::class, 'create']);
+Route::post('/admin/store-information', [AdminInformationController::class, 'store']);
+Route::get('/admin/edit-information/{id}', [AdminInformationController::class, 'edit']);
+Route::put('/admin/information-update/{id}', [AdminInformationController::class, 'update']);
+Route::delete('/admin/delete-information/{id}', [AdminInformationController::class, 'delete']);
 
-Route::get('/admin/category-management', [CategoryController::class, 'index']);
-Route::get('/admin/add-category', [CategoryController::class, 'create']);
-Route::post('/admin/store-category', [CategoryController::class, 'store']);
-Route::get('/admin/edit-category/{id}', [CategoryController::class, 'edit']);
-Route::put('/admin/category-update/{id}', [CategoryController::class, 'update']);
-Route::delete('/admin/delete-category/{id}', [CategoryController::class, 'delete']);
+Route::get('/admin/category-management', [AdminCategoryController::class, 'index']);
+Route::get('/admin/add-category', [AdminCategoryController::class, 'create']);
+Route::post('/admin/store-category', [AdminCategoryController::class, 'store']);
+Route::get('/admin/edit-category/{id}', [AdminCategoryController::class, 'edit']);
+Route::put('/admin/category-update/{id}', [AdminCategoryController::class, 'update']);
+Route::delete('/admin/delete-category/{id}', [AdminCategoryController::class, 'delete']);
 
-Route::get('/admin/photo-gallery', [GalleryPhotoController::class, 'index']);
-Route::get('/add-photos', [GalleryPhotoController::class, 'create']);
-Route::post('/upload-images', [GalleryPhotoController::class, 'store']);
-Route::delete('/delete-photo/{id}', [GalleryPhotoController::class, 'delete']);
+Route::get('/admin/photo-gallery', [AdminGalleryPhotoController::class, 'index']);
+Route::get('/add-photos', [AdminGalleryPhotoController::class, 'create']);
+Route::post('/upload-images', [AdminGalleryPhotoController::class, 'store']);
+Route::delete('/delete-photo/{id}', [AdminGalleryPhotoController::class, 'delete']);
 
 Route::get('/admin-video-gallery', function () {
     return view('admin/video');
 });
 
-Route::get('/admin/contact-management', [ContactController::class, 'index']);
-Route::get('/admin/add-contact', [ContactController::class, 'create']);
-Route::post('/admin/store-contact', [ContactController::class, 'store']);
-Route::get('/admin/edit-contact/{id}', [ContactController::class, 'edit']);
-Route::put('/admin/contact-update/{id}', [ContactController::class, 'update']);
-Route::delete('/admin/delete-contact/{id}', [ContactController::class, 'delete']);
+Route::get('/admin/contact-management', [AdminContactController::class, 'index']);
+Route::get('/admin/add-contact', [AdminContactController::class, 'create']);
+Route::post('/admin/store-contact', [AdminContactController::class, 'store']);
+Route::get('/admin/edit-contact/{id}', [AdminContactController::class, 'edit']);
+Route::put('/admin/contact-update/{id}', [AdminContactController::class, 'update']);
+Route::delete('/admin/delete-contact/{id}', [AdminContactController::class, 'delete']);
 
 Route::get('/admin/user-management', [UserController::class, 'index']);
 Route::get('/admin/add-user', [UserController::class, 'create']);

@@ -1,273 +1,105 @@
-/**
-* Template Name: Medicio
-* Updated: Sep 18 2023 with Bootstrap v5.3.2
-* Template URL: https://bootstrapmade.com/medicio-free-bootstrap-theme/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-(function() {
-  "use strict";
+(function () {
+    "use strict";
 
-  /**
-   * Easy selector helper function
-   */
-  const select = (el, all = false) => {
-    el = el.trim()
-    if (all) {
-      return [...document.querySelectorAll(el)]
-    } else {
-      return document.querySelector(el)
+    // Helper function to select elements
+    function select(selector) {
+        return document.querySelector(selector);
     }
-  }
 
-  /**
-   * Easy event listener function
-   */
-  const on = (type, el, listener, all = false) => {
-    let selectEl = select(el, all)
-    if (selectEl) {
-      if (all) {
-        selectEl.forEach(e => e.addEventListener(type, listener))
-      } else {
-        selectEl.addEventListener(type, listener)
-      }
+    // Helper function to smoothly scroll to a target
+    function scrollto(target) {
+        // Implementation for smooth scrolling goes here
+        // You may use window.scrollTo or other methods
     }
-  }
 
-  /**
-   * Easy on scroll event listener 
-   */
-  const onscroll = (el, listener) => {
-    el.addEventListener('scroll', listener)
-  }
+    /**
+     * Mobile nav toggle
+     */
+    const handleMobileNavToggle = function (e) {
+        const navbar = select("#navbar");
 
-  /**
-   * Navbar links active state on scroll
-   */
-  let navbarlinks = select('#navbar .scrollto', true)
-  const navbarlinksActive = () => {
-    let position = window.scrollY + 200
-    navbarlinks.forEach(navbarlink => {
-      if (!navbarlink.hash) return
-      let section = select(navbarlink.hash)
-      if (!section) return
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        navbarlink.classList.add('active')
-      } else {
-        navbarlink.classList.remove('active')
-      }
-    })
-  }
-  window.addEventListener('load', navbarlinksActive)
-  onscroll(document, navbarlinksActive)
-
-  /**
-   * Scrolls to an element with header offset
-   */
-  const scrollto = (el) => {
-    let header = select('#header')
-    let offset = header.offsetHeight
-
-    let elementPos = select(el).offsetTop
-    window.scrollTo({
-      top: elementPos - offset,
-      behavior: 'smooth'
-    })
-  }
-
-  /**
-   * Toggle .header-scrolled class to #header when page is scrolled
-   */
-  let selectHeader = select('#header')
-  let selectTopbar = select('#topbar')
-  if (selectHeader) {
-    const headerScrolled = () => {
-      if (window.scrollY > 100) {
-        selectHeader.classList.add('header-scrolled')
-        if (selectTopbar) {
-          selectTopbar.classList.add('topbar-scrolled')
+        // Periksa apakah elemen navbar ada dan tidak null
+        if (navbar && navbar.classList) {
+            navbar.classList.toggle("navbar-mobile");
+            this.classList.toggle("bi-list");
+            this.classList.toggle("bi-x");
+        } else {
+            console.error(
+                "Navbar element not found or does not have classList property"
+            );
         }
-      } else {
-        selectHeader.classList.remove('header-scrolled')
-        if (selectTopbar) {
-          selectTopbar.classList.remove('topbar-scrolled')
+    };
+
+    select(".mobile-nav-toggle").addEventListener(
+        "click",
+        handleMobileNavToggle
+    );
+
+    /**
+     * Mobile nav dropdowns activate
+     */
+    const handleNavbarDropdown = function (e) {
+        const navbar = select("#navbar");
+        if (navbar.classList.contains("navbar-mobile")) {
+            e.preventDefault();
+            this.nextElementSibling.classList.toggle("dropdown-active");
         }
-      }
-    }
-    window.addEventListener('load', headerScrolled)
-    onscroll(document, headerScrolled)
-  }
+    };
 
-  /**
-   * Back to top button
-   */
-  let backtotop = select('.back-to-top')
-  if (backtotop) {
-    const toggleBacktotop = () => {
-      if (window.scrollY > 100) {
-        backtotop.classList.add('active')
-      } else {
-        backtotop.classList.remove('active')
-      }
-    }
-    window.addEventListener('load', toggleBacktotop)
-    onscroll(document, toggleBacktotop)
-  }
-
-  /**
-   * Mobile nav toggle
-   */
-  on('click', '.mobile-nav-toggle', function(e) {
-    select('#navbar').classList.toggle('navbar-mobile')
-    this.classList.toggle('bi-list')
-    this.classList.toggle('bi-x')
-  })
-
-  /**
-   * Mobile nav dropdowns activate
-   */
-  on('click', '.navbar .dropdown > a', function(e) {
-    if (select('#navbar').classList.contains('navbar-mobile')) {
-      e.preventDefault()
-      this.nextElementSibling.classList.toggle('dropdown-active')
-    }
-  }, true)
-
-  /**
-   * Scrool with ofset on links with a class name .scrollto
-   */
-  on('click', '.scrollto', function(e) {
-    if (select(this.hash)) {
-      e.preventDefault()
-
-      let navbar = select('#navbar')
-      if (navbar.classList.contains('navbar-mobile')) {
-        navbar.classList.remove('navbar-mobile')
-        let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
-      }
-      scrollto(this.hash)
-    }
-  }, true)
-
-  /**
-   * Scroll with ofset on page load with hash links in the url
-   */
-  window.addEventListener('load', () => {
-    if (window.location.hash) {
-      if (select(window.location.hash)) {
-        scrollto(window.location.hash)
-      }
-    }
-  });
-
-  /**
-   * Preloader
-   */
-  let preloader = select('#preloader');
-  if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.remove()
+    const dropdownLinks = document.querySelectorAll(".navbar .dropdown > a");
+    dropdownLinks.forEach(function (link) {
+        link.addEventListener("click", handleNavbarDropdown, true);
     });
-  }
 
-  /**
-   * Hero carousel indicators
-   */
-  let heroCarouselIndicators = select("#hero-carousel-indicators")
-  let heroCarouselItems = select('#heroCarousel .carousel-item', true)
+    /**
+     * Slider carousel indicators
+     */
+    document.addEventListener('DOMContentLoaded', function () {
+        // Inisialisasi Carousel
+        var myCarousel = new bootstrap.Carousel(document.getElementById('sliderCarousel'), {
+          interval: 5000, // Interval antara slide (dalam milidetik)
+          wrap: true, // Putar ulang slider setelah mencapai slide terakhir
+          keyboard: true // Aktifkan navigasi keyboard
+        });
+    
+        // Mengatur indikator carousel
+        var indicatorsContainer = document.getElementById('slider-carousel-indicators');
+        var slides = document.querySelectorAll('.carousel-item');
+    
+        slides.forEach(function (slide, index) {
+          var indicator = document.createElement('li');
+          indicator.setAttribute('data-bs-target', '#sliderCarousel');
+          indicator.setAttribute('data-bs-slide-to', index.toString());
+    
+          if (index === 0) {
+            indicator.classList.add('active');
+          }
+    
+          indicatorsContainer.appendChild(indicator);
+        });
+      });
 
-  heroCarouselItems.forEach((item, index) => {
-    (index === 0) ?
-    heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "' class='active'></li>":
-      heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "'></li>"
-  });
+    /**
+     * Scroll with offset on links with a class name .scrollto
+     */
+    const handleScrollTo = function (e) {
+        const hashTarget = select(this.hash);
+        if (hashTarget) {
+            e.preventDefault();
 
-  /**
-   * Testimonials slider
-   */
-  new Swiper('.testimonials-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 20
-      },
+            const navbar = select("#navbar");
+            if (navbar.classList.contains("navbar-mobile")) {
+                navbar.classList.remove("navbar-mobile");
+                const navbarToggle = select(".mobile-nav-toggle");
+                navbarToggle.classList.toggle("bi-list");
+                navbarToggle.classList.toggle("bi-x");
+            }
+            scrollto(this.hash);
+        }
+    };
 
-      1200: {
-        slidesPerView: 3,
-        spaceBetween: 20
-      }
-    }
-  });
-
-  /**
-   * Clients Slider
-   */
-  new Swiper('.gallery-slider', {
-    speed: 400,
-    loop: true,
-    centeredSlides: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 20
-      },
-      640: {
-        slidesPerView: 3,
-        spaceBetween: 20
-      },
-      992: {
-        slidesPerView: 5,
-        spaceBetween: 20
-      }
-    }
-  });
-
-  /**
-   * Initiate gallery lightbox 
-   */
-  const galleryLightbox = GLightbox({
-    selector: '.gallery-lightbox'
-  });
-
-  /**
-   * Animation on scroll
-   */
-  window.addEventListener('load', () => {
-    AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    })
-  });
-
-  /**
-   * Initiate Pure Counter 
-   */
-  new PureCounter();
-
-})()
+    const scrollToLinks = document.querySelectorAll(".scrollto");
+    scrollToLinks.forEach(function (link) {
+        link.addEventListener("click", handleScrollTo, true);
+    });
+})();

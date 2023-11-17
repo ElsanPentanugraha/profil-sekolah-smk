@@ -27,23 +27,28 @@
                     </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-center">
-                            <h4>{{ $information->name }}</h4>
+                            <h2>{{ $information->name }}</h2>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3">
+                            <img src="{{ asset('storage/image/' . $information->image) }}" class="img-fluid"
+                                style="max-width: 1100px; max-height: 850px;" alt="">
                         </div>
 
-                        <div class="d-flex mt-3">
-                            <p>
-                                Posted on {{ $information->created_at }}
-                                by <span>{{ $information->write_by }}</span>
-                            </p>
-                        </div>
-                        <div class="d-flex ">
-                            <img src="{{ asset('storage/image/' . $information->image) }}" class="img-fluid" alt="">
-                        </div>
-                        <div class="text-justify mt-3">
-                           {!! $information->description !!}
+                        <div class="text-justify mt-2">
+                            {!! $information->description !!}
                             {{-- <p class="text-justify">
                                 {{ $information->description }}
                             </p> --}}
+                        </div>
+
+                        <div class="d-flex justify-content-start mt-3">
+                            <div class="d-flex">
+                                <i class="bi bi-calendar-event px-2"> </i>
+                                <p> {{ $datearticle }} </p>
+                            </div>
+                            <div class="d-flex px-3">
+                                <i class="bi bi-person px-2"> </i> <p> {{ $information->write_by }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
