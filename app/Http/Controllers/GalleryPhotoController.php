@@ -15,6 +15,6 @@ class GalleryPhotoController extends Controller
         $contact = Contact::latest()->first();
         $majorId = Major::select('id','name')->get();
 
-        return view('test.galeri', compact('photos', 'contact', 'majorId'));
+        return view('global.galeri', compact('photos', 'contact', 'majorId'));
     }
 }

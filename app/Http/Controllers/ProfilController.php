@@ -12,6 +12,6 @@ class ProfilController extends Controller
         $contact = Contact::latest()->first();
         $majorId = Major::select('id','name')->get();
 
-        return view('test.profil', compact('contact', 'majorId'));
+        return view('global.profil', compact('contact', 'majorId'));
     }
 }

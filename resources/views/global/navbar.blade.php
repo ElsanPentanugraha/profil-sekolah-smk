@@ -1,6 +1,6 @@
 <header id="header" class="fixed-top">
     <div class="container d-flex justify-content-between">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{ url('/') }}">
             <img src="{{ asset('storage/logo/LogoSMK2.jpg') }}" alt="" class="logo">
             <div class="school-info">
                 <span class="school-name">SMKN 1 Tamiang Layang</span>
@@ -18,8 +18,8 @@
                         <li><a href="{{ url('/profile#visi') }}">Visi & Misi</a></li>
                     </ul>
                 </li>
-                <li><a class="nav-link" href="{{ url('/e-learning') }}">E-Learning</a></li>
-                <li><a class="nav-link" href="{{ url('/ppdb') }}">PPDB</a></li>
+                {{-- <li><a class="nav-link" href="#">E-Learning</a></li>
+                <li><a class="nav-link" href="#">PPDB</a></li> --}}
                 <li class="dropdown"><a href="{{ url('/major') }}"><span>Program Keahlian</span> <i
                             class="bi bi-chevron-down"></i></a>
                     <ul>
@@ -42,6 +42,7 @@
                         <li><a href="{{ url('/contact') }}">Kontak</a></li>
                     </ul>
                 </li>
+                {{-- buat link dashboard admin jika sudah login --}}
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>

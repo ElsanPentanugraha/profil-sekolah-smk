@@ -14,6 +14,6 @@ class landingController extends Controller
         $contact = Contact::latest()->first();
         $majorId = Major::select('id','name')->get();
 
-        return view('test.home', compact('posts', 'contact', 'majorId'));
+        return view('global.home', compact('posts', 'contact', 'majorId'));
     }
 }

@@ -6,10 +6,10 @@
     <section id="major-detail">
         <div class="container mt-5">
             <div class="major-item text-center">
-                <h3 class="mb-4">{{ $majorDetail->name }}</h3>
+                <h3 class="mb-3">{{ $majorDetail->name }}</h3>
                 <img src="{{ asset('storage/majors/' . $majorDetail->image) }}" class="img-fluid" alt="">
             </div>
-            <div class="text-justify mt-5">
+            <div class="text-justify mt-4">
                 {!! $majorDetail->description !!}
             </div>
         </div>

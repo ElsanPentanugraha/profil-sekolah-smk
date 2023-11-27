@@ -11,9 +11,10 @@
                     @foreach ($photos as $item)
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="card text-center">
-                                <img src="{{ asset('storage/gallery/' . $item->image) }}" class="card-img-top" alt="">
+                                <img src="{{ asset('storage/gallery/' . $item->image) }}" class="card-img-top" alt=""
+                                    onclick="showImage('{{ asset('storage/gallery/' . $item->image) }}', '{{ $item->name }}')">
                                 <div class="card-body">
-                                    <a class="card-text">{{ $item->name }}</a>
+                                    <a href="#" class="card-text">{{ $item->name }}</a>
                                 </div>
                             </div>
                         </div>

@@ -19,8 +19,8 @@
                     <ul>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{ url('/') }}">Beranda</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{ url('/profile') }}">Profil</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">E-Learning</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">PPDB</a></li>
+                        {{-- <li><i class="bi bi-chevron-right"></i> <a href="#">E-Learning</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#">PPDB</a></li> --}}
                         <li><i class="bi bi-chevron-right"></i> <a href="{{ url('/information') }}">Informasi</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{ url('/gallery') }}">Galeri</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="{{ url('/contact') }}">Hubungi Kami</a></li>

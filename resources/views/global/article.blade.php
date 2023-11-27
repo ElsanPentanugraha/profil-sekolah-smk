@@ -1,13 +1,13 @@
 @extends('landing.userApp')
 
-@section('title', 'Information')
+@section('title', 'Artikel')
 
 @section('content')
     <div class="container page-information mt-5">
         <div class="row">
-            <div class="col-lg-9 col-md-12">
+            <div class="col-lg-9 col-md-7 col-sm-12">
                 <div class="information-posts">
-                    <h2>Pengumuman, Informasi, & Artikel</h2>
+                    <h2>Artikel</h2>
                     @foreach ($informations as $information)
                         <div class="card information-post-items mb-3 ">
                             <div class="row g-0">
@@ -36,7 +36,7 @@
                 </div>
 
             </div>
-            <div class="col-lg-3 col-md-12">
+            <div class="col-lg-3 col-md-5 col-sm-12">
                 <div class="searchbar-feature">
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -44,17 +44,13 @@
                     </form>
                 </div>
 
-                <div class="filter-posts">
-                    <h3>Filter berdasarkan</h3>
-                    <div class="filter-checks">
-                        @foreach ($categories as $item)
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    {{ $item->name }}
-                                </label>
-                            </div>
-                        @endforeach
+                <div class="archives mt-4 px-3">
+                    {{-- buat arsip berdasarkan bulan tahun berjalan --}}
+                    <h2>Arsip</h2>
+                    <div class="archieve-menu">
+                        <a href="" class="archieve-link my-3">Pengumuman</a>
+                        <a href="" class="archieve-link my-3">Berita</a>
+                        <a href="" class="archieve-link my-3">Artikel</a>
                     </div>
                 </div>
             </div>

@@ -1,15 +1,18 @@
 @extends('landing.userApp')
 
-@section('title', 'Detail Artikel')
+@section('title', 'Information')
 
 @section('content')
     <section id="information-detail">
         <div class="container mt-5">
             <div class="text-center information-item">
-                <h3 class="mb-4">{{ $information->name }}</h3>
+                <h3 class="mb-3">{{ $information->name }}</h3>
                 <img src="{{ asset('storage/image/' . $information->image) }}" class="img-fluid" alt="">
             </div>
-            <div class="post-info d-flex justify-content-start mt-5">
+            <div class="text-justify mt-3">
+                {!! $information->description !!}
+            </div>
+            <div class="post-info-selected d-flex justify-content-start mt-1">
                 <div class="d-flex">
                     <i class="bi bi-calendar-event px-2"> </i>
                     <p> {{ date('d F Y', strtotime($information->created_at)) }} </p>
@@ -24,9 +27,6 @@
                         <p>{{ $item->name }}</p>
                     @endforeach
                 </div>
-            </div>
-            <div class="text-justify mt-1">
-                {!! $information->description !!}
             </div>
         </div>
     </section>

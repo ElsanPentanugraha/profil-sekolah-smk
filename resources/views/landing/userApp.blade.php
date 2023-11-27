@@ -26,9 +26,9 @@
 </head>
 
 <body>
-    @include('test.navbar')
+    @include('global.navbar')
     @yield('content')
-    @include('test.footer')
+    @include('global.footer')
 
 
     <!-- Vendor JS Files -->
@@ -39,9 +39,50 @@
         CKEDITOR.replace('message');
     </script>
 
+    <script>
+        function showImage(imageSource, imageName) {
+            var modal = document.getElementById('myModal');
+            var modalImg = document.getElementById('modalImage');
+            var captionText = document.getElementById('caption');
+
+            // Open the modal and set the image source
+            modal.style.display = 'block';
+            modalImg.src = imageSource;
+            modalImg.alt = imageName;
+
+            // Set the caption
+            captionText.innerHTML = imageName;
+
+            // Add a close button to the modal
+            var span = document.getElementsByClassName('close')[0];
+
+            // Close the modal when the close button is clicked
+            span.onclick = function() {
+                closeModal();
+            }
+
+            // Close the modal when clicking outside the image
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    closeModal();
+                }
+            }
+        }
+
+        function closeModal() {
+            var modal = document.getElementById('myModal');
+            modal.style.display = 'none';
+        }
+    </script>
+
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
+    <div id="myModal" class="gallery-modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="caption" class="caption"></div>
+    </div>
 </body>
 
 </html>

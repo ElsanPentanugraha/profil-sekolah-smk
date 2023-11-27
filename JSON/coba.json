@@ -1,0 +1,32 @@
+[
+    {
+        "nama": "Elsan Pentanugraha",
+        "umur": 22,
+        "nim": "19303050347",
+        "lulus": true,
+        "hobby": [
+            "Coding",
+            "Music",
+            "Movies"
+        ],
+        "pembimbing": {
+            "pembimbing1": "Agus",
+            "pembimbing2": "efrans"
+        }
+    },
+    {
+        "nama": "Elsan Pentanugraha",
+        "umur": 22,
+        "nim": "19303050347",
+        "lulus": true,
+        "hobby": [
+            "Coding",
+            "Music",
+            "Movies"
+        ],
+        "pembimbing": {
+            "pembimbing1": "Agus",
+            "pembimbing2": "efrans"
+        }
+    }
+]

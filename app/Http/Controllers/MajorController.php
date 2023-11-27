@@ -13,13 +13,13 @@ class MajorController extends Controller
         $majors = Major::all();
         $contact = Contact::latest()->first();
         $majorId = Major::select('id','name')->get();
-        return view('test.major', compact('contact', 'majors', 'majorId'));
+        return view('global.major', compact('contact', 'majors', 'majorId'));
     }
 
     public function show($id) {
         $majorDetail = Major::findOrFail($id);
         $contact = Contact::latest()->first();
         $majorId = Major::select('id','name')->get();
-        return view('test.detail-major', compact('contact', 'majorDetail', 'majorId'));
+        return view('global.detail-major', compact('contact', 'majorDetail', 'majorId'));
     }
 }

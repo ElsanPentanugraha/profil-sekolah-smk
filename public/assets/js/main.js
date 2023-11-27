@@ -54,30 +54,35 @@
     /**
      * Slider carousel indicators
      */
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener("DOMContentLoaded", function () {
         // Inisialisasi Carousel
-        var myCarousel = new bootstrap.Carousel(document.getElementById('sliderCarousel'), {
-          interval: 5000, // Interval antara slide (dalam milidetik)
-          wrap: true, // Putar ulang slider setelah mencapai slide terakhir
-          keyboard: true // Aktifkan navigasi keyboard
-        });
-    
+        var myCarousel = new bootstrap.Carousel(
+            document.getElementById("sliderCarousel"),
+            {
+                interval: 5000, // Interval antara slide (dalam milidetik)
+                wrap: true, // Putar ulang slider setelah mencapai slide terakhir
+                keyboard: true, // Aktifkan navigasi keyboard
+            }
+        );
+
         // Mengatur indikator carousel
-        var indicatorsContainer = document.getElementById('slider-carousel-indicators');
-        var slides = document.querySelectorAll('.carousel-item');
-    
+        var indicatorsContainer = document.getElementById(
+            "slider-carousel-indicators"
+        );
+        var slides = document.querySelectorAll(".carousel-item");
+
         slides.forEach(function (slide, index) {
-          var indicator = document.createElement('li');
-          indicator.setAttribute('data-bs-target', '#sliderCarousel');
-          indicator.setAttribute('data-bs-slide-to', index.toString());
-    
-          if (index === 0) {
-            indicator.classList.add('active');
-          }
-    
-          indicatorsContainer.appendChild(indicator);
+            var indicator = document.createElement("li");
+            indicator.setAttribute("data-bs-target", "#sliderCarousel");
+            indicator.setAttribute("data-bs-slide-to", index.toString());
+
+            if (index === 0) {
+                indicator.classList.add("active");
+            }
+
+            indicatorsContainer.appendChild(indicator);
         });
-      });
+    });
 
     /**
      * Scroll with offset on links with a class name .scrollto

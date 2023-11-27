@@ -27,7 +27,7 @@
                         <p>Teknik Kendaraan Ringan adalah ilmu yang mempelajari tentang alat-alat transportasi darat yang
                             menggunakan mesin, terutama mobil yang mulai berkembang sebagai cabang ilmu seiring dengan
                             diciptakannya mesin mobil.</p>
-                        <a href="#about" class="btn-slider scrollto">Read More</a>
+                        {{-- <a href="#about" class="btn-slider scrollto">Read More</a> --}}
                     </div>
                 </div>
 
@@ -37,7 +37,7 @@
                         <h2>Teknik Elektronika</h2>
                         <p>Teknik Elektronika merupakan salah satu jurusan di SMK Negeri 1 Tamiang Layang. Jurusan Teknik
                             Elektronika Audio Video dibuka pada tahun 2011.</p>
-                        <a href="#about" class="btn-slider scrollto">Read More</a>
+                        {{-- <a href="#about" class="btn-slider scrollto">Read More</a> --}}
                     </div>
                 </div>
 
@@ -48,7 +48,7 @@
                         <p>Multimedia merupakan salah satu kompetensi keahlian di SMK yang termasuk dalam rumpun bidang
                             keahlian Teknik Komputer dan Informatika. Kompetensi keahlian ini cukup banyak diminati oleh
                             siswa lho..</p>
-                        <a href="#about" class="btn-slider scrollto">Read More</a>
+                        {{-- <a href="#about" class="btn-slider scrollto">Read More</a> --}}
                     </div>
                 </div>
 
@@ -59,7 +59,7 @@
                         <p>Jurusan Otomatisasi dan Tata Kelola Perkantoran (OTKP) merupakan salah salah satu jurusan di
                             Sekolah Menengah Kejuruan (SMK) yang memberikan bekal tentang pengetahuan, keterampilan, dan
                             sikap dalam menyelesaikan pekerjaan-pekerjaan perusahaan atau kantor.</p>
-                        <a href="#about" class="btn-slider scrollto">Read More</a>
+                        {{-- <a href="#about" class="btn-slider scrollto">Read More</a> --}}
                     </div>
                 </div>
 
@@ -125,7 +125,7 @@
                     {{-- sambutan kepala sekolah bisa ditambahkan --}}
 
                     <div class="archives mt-4 px-3">
-                        {{-- Arsip tahun berjalan --}}
+                        {{-- buat arsip berdasarkan bulan tahun berjalan --}}
                         <h2>Arsip</h2>
                         <div class="archieve-menu">
                             <a href="" class="archieve-link my-3">Pengumuman</a>

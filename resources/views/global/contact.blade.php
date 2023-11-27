@@ -62,7 +62,12 @@
         <div class="container mt-5">
             <div class="email-forms">
                 <h2>Hubungi Kami</h2>
-                <form action="">
+                @if (Session::has('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ Session::get('message') }}
+                    </div>
+                @endif
+                <form action="contact/send-mail">
                     @csrf
                     <div class="row">
                         <div class="col-lg-6">
@@ -86,7 +91,7 @@
                         <label for="subject">Subject</label>
                     </div>
                     <div class="form-floating mb-5">
-                        <textarea cols="30" rows="20" class="form-control" id="message" type="text" name='message'
+                        <textarea cols="30" rows="20" class="form-control" id="message" type="text" name='mail_message'
                             placeholder="Tulis Pesan"></textarea>
 
                     </div>

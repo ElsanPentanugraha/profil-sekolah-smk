@@ -533,9 +533,9 @@ h6 {
     text-align: justify;
 }
 
-.major-item img{
-    max-width: 1000px;
-    max-height: 750px;
+.major-item img {
+    max-width: 875px;
+    max-height: 675px;
 }
 
 @media (max-width: 1098px) {
@@ -565,7 +565,7 @@ h6 {
         max-height: 200px;
     }
 
-    .text-justify{
+    .text-justify {
         margin-right: 10px;
         padding-right: 10px;
     }
@@ -611,9 +611,9 @@ h6 {
     margin-bottom: 40px;
 }
 
-.information-item img{
-    max-width: 1000px;
-    max-height: 750px;
+.information-item img {
+    max-width: 875px;
+    max-height: 675px;
 }
 
 @media (max-width: 1098px) {
@@ -643,7 +643,7 @@ h6 {
         max-height: 200px;
     }
 
-    .text-justify{
+    .text-justify {
         margin-right: 10px;
         padding-right: 10px;
     }
@@ -667,6 +667,12 @@ h6 {
     color: #0077b6;
     background: #fff;
     transition: 0.5s;
+}
+
+.post-info-selected {
+    border-top: 1px solid #080808;
+    border-bottom: 1px solid #080808;
+    padding-top: 16px;
 }
 
 .post-info i,
@@ -709,6 +715,7 @@ h6 {
     padding: 30px 10px 10px 10px;
     color: #fff;
     background-color: #00a9ff;
+    margin-bottom: 30px;
 }
 
 .archieve-menu a {
@@ -851,6 +858,51 @@ h6 {
     padding: 80px 0 0 0;
 }
 
+.gallery-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 90%;
+    max-width: 1100px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.caption {
+    text-align: center;
+    color: #fff;
+    margin: 10px 0;
+    display: block;
+}
+
 /* footer */
 #footer {
     background: #00a9ff;
@@ -915,4 +967,20 @@ h6 {
 .copyright strong {
     padding: 0 0 0 4px;
     color: #3a3a3a;
+}
+
+/* --------------------------------------------------------- */
+/* Login */
+
+.floatAuthentication {
+    padding: 50px 30px 50px 30px;
+}
+
+.login-brand {
+    padding: 15px 10px 0 0;
+    border-right: #080808 solid 1px;
+}
+
+.login-title {
+    padding: 0 0 0 10px;
 }
