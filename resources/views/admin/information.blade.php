@@ -12,11 +12,7 @@
                     <li class="breadcrumb-item active">Informasi</li>
                 </ol>
                 <hr>
-                @if (Session::has('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ Session::get('message') }}
-                    </div>
-                @endif
+
                 <div class="card mb-4">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
@@ -69,7 +65,8 @@
                                                     method="post">
                                                     @csrf
                                                     @method('delete')
-                                                    <button class="btn btn-danger btn-icon-split btn-sm ml-2">
+                                                    <button class="btn btn-danger btn-icon-split btn-sm ml-2"
+                                                        onclick="return confirm('Are you sure you want to delete this item?');">
                                                         <span class="icon text-white">
                                                             <i class="fas fa-trash"></i>
                                                         </span>

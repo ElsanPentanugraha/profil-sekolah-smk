@@ -11,11 +11,40 @@ use Illuminate\Support\Facades\Session;
 
 class InformationController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $keyword = $request->keyword;
+
         $informations = Information::with('category')
+            ->where('name', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('write_by', 'LIKE', '%' . $keyword . '%')
+            ->orWhereHas('category', function ($query) use ($keyword) {
+                $query->where('name', 'LIKE', '%' . $keyword . '%');
+            })
             ->orderByDesc('created_at')
             ->paginate(10);
+
+        $contact = Contact::latest()->first();
+        $categories = Category::all();
+        $majorId = Major::select('id', 'name')->get();
+
+        return view(
+            'global.information',
+            compact('informations', 'contact', 'categories', 'majorId')
+        );
+    }
+
+    public function showArchive($year = null, $month = null)
+    {
+        $informations = Information::when($year, function ($query, $year) {
+            return $query->whereYear('created_at', $year);
+        })
+            ->when($month, function ($query, $month) {
+                return $query->whereMonth('created_at', $month);
+            })
+            ->latest()
+            ->paginate(10);
+
         $contact = Contact::latest()->first();
         $categories = Category::all();
         $majorId = Major::select('id', 'name')->get();
@@ -35,6 +64,27 @@ class InformationController extends Controller
         return view(
             'global.detail-information',
             compact('information', 'contact', 'majorId')
+        );
+    }
+
+    public function filterByCategory(Request $request)
+    {
+        $contact = Contact::latest()->first();
+        $categories = Category::all();
+        $majorId = Major::select('id', 'name')->get();
+
+        $selectedCategories = $request->input('categories', []);
+
+        $informations = Information::with('category')
+            ->whereHas('category', function ($query) use ($selectedCategories) {
+                $query->whereIn('id', $selectedCategories);
+            })
+            ->orderByDesc('created_at')
+            ->paginate(10);
+
+        return view(
+            'global.information',
+            compact('categories', 'informations', 'contact', 'majorId')
         );
     }
 

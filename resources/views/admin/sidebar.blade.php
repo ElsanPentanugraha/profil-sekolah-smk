@@ -33,6 +33,10 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
+                    <a class="nav-link" href="{{ url('/admin/dashboard') }}">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-house-chimney"></i></div>
+                        Dashboard
+                    </a>
                     <div class="sb-sidenav-menu-heading">Master Data</div>
                     {{-- <a class="nav-link" href="{{ url('/admin/school-profile') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-school"></i></div>

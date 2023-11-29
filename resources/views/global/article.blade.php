@@ -44,15 +44,15 @@
                     </form>
                 </div>
 
-                <div class="archives mt-4 px-3">
                     {{-- buat arsip berdasarkan bulan tahun berjalan --}}
+                {{-- <div class="archives mt-4 px-3">
                     <h2>Arsip</h2>
                     <div class="archieve-menu">
                         <a href="" class="archieve-link my-3">Pengumuman</a>
                         <a href="" class="archieve-link my-3">Berita</a>
                         <a href="" class="archieve-link my-3">Artikel</a>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

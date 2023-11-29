@@ -12,12 +12,6 @@
                     <li class="breadcrumb-item active">Kontak</li>
                 </ol>
                 <hr>
-
-                @if (Session::has('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ Session::get('message') }}
-                    </div>
-                @endif
                 <div class="card mb-4">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
@@ -63,7 +57,8 @@
                                             <form action="/admin/delete-contact/{{ $contact->id }}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <button class="btn btn-danger btn-icon-split btn-sm">
+                                                <button class="btn btn-danger btn-icon-split btn-sm"
+                                                    onclick="return confirm('Are you sure you want to delete this item?');">
                                                     <span class="icon text-white">
                                                         <i class="fas fa-trash"></i>
                                                     </span>
@@ -78,7 +73,7 @@
                         </table>
                     </div>
                 </div>
-                
+
             </div>
         </main>
-@endsection
+    @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminHandleEmailController extends Controller
 {
@@ -28,9 +29,9 @@ class AdminHandleEmailController extends Controller
         $mail = Message::findOrFail($id);
         $mail->delete();
         if ($mail) {
-            Session::flash('status', 'success');
-            Session::flash('message', 'Pesan Email sudah berhasil Dihapus!');
+            Alert::success('Berhasil!', 'Email Berhasil Hapus');
+            return redirect('/admin/message-management');
         }
-        return redirect('/admin/message-management');
+        
     }
 }

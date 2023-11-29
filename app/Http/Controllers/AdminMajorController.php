@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Major;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminMajorController extends Controller
 {
@@ -37,8 +38,7 @@ class AdminMajorController extends Controller
         $major = Major::create($request->all());
 
         if ($major) {
-            Session::flash('status', 'success');
-            Session::flash('message', 'Data Informasi Program Keahlian Berhasil Disimpan!');
+            Alert::success('Berhasil!', 'Data Program Keahlian Berhasil Ditambahkan');
         }
 
         return redirect('/admin/major-management');
@@ -66,8 +66,7 @@ class AdminMajorController extends Controller
         $major->update($request->all());
 
         if ($major) {
-            Session::flash('status', 'success');
-            Session::flash('message', 'Perubahan Data Informasi Program Keahlian Berhasil Disimpan!');
+            Alert::success('Berhasil!', 'Data Program Keahlian Berhasil Diubah');
         }
 
         return redirect('/admin/major-management');
@@ -75,13 +74,12 @@ class AdminMajorController extends Controller
 
     public function delete($id) {
         $major = Major::findOrFail($id);
-        $major->delete();
+        
 
         if ($major) {
-            Session::flash('status', 'success');
-            Session::flash('message', 'Data Informasi Program Keahlian Berhasil Dihapus!');
+            $major->delete();
+            Alert::success('Berhasil!', 'Dara Program Keahlian Berhasil Dihapus');
+            return redirect('/admin/major-management');
         }
-
-        return redirect('/admin/major-management');
     }
 }

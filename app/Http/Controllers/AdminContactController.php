@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminContactController extends Controller
 {
@@ -20,8 +21,7 @@ class AdminContactController extends Controller
     public function store(Request $request) {
         $contact = Contact::create($request->all());
         if ($contact) {
-            Session::flash('status', 'success');
-            Session::flash('message', 'Data Kontak Berhasil Dibuat!');
+            Alert::success('Berhasil!', 'Data Kontak Berhasil Ditambahkan');
         }
         return redirect('/admin/contact-management');
     }
@@ -35,8 +35,7 @@ class AdminContactController extends Controller
         $contact = Contact::findOrFail($id);
         $contact->update($request->all());
         if ($contact) {
-            Session::flash('status', 'success');
-            Session::flash('message', 'Data Kontak Berhasil Diupdate!');
+            Alert::success('Berhasil!', 'Data Kontak Berhasil Diubah');
         }
         return redirect('/admin/contact-management');
     }
@@ -45,9 +44,10 @@ class AdminContactController extends Controller
         $contact = Contact::findOrFail($id);
         $contact->delete();
         if ($contact) {
-            Session::flash('status', 'success');
-            Session::flash('message', 'Data Kontak Berhasil Dihapus!');
+            Alert::success('Berhasil!', 'Data Kontak Berhasil Hapus');
+
+            return redirect('/admin/contact-management');
         }
-        return redirect('/admin/contact-management');
+       
     }
 }

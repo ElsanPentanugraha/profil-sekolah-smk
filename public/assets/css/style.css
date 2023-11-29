@@ -599,7 +599,7 @@ h6 {
 }
 
 .filter-posts {
-    margin: 30px 0 0 0;
+    margin: 30px 0 30px 0;
     padding: 15px 0 20px 10px;
     border-radius: 15px;
     color: #fff;
@@ -614,6 +614,26 @@ h6 {
 .information-item img {
     max-width: 875px;
     max-height: 675px;
+}
+
+#applyFilterButton{
+    font-family: "Roboto", sans-serif;
+    margin: 8px 0 0 0;
+    padding: 5px 10px 5px 10px;
+    border-radius: 15px;
+    color: #fff;
+    background-color: #00a9ff;
+    border: 2px solid #fff;
+}
+
+#applyFilterButton:hover{
+    font-family: "Roboto", sans-serif;
+    margin: 8px 0 0 0;
+    padding: 5px 10px 5px 10px;
+    border-radius: 15px;
+    color: #00a9ff;
+    background-color: #fff;
+    border: 2px solid #00a9ff;
 }
 
 @media (max-width: 1098px) {
@@ -718,7 +738,7 @@ h6 {
     margin-bottom: 30px;
 }
 
-.archieve-menu a {
+.archive-menu a {
     display: block;
     border-radius: 15px;
     padding: 5px 0 5px 10px;
@@ -726,7 +746,7 @@ h6 {
     color: #555555;
 }
 
-.archieve-menu a:hover {
+.archive-menu a:hover {
     display: block;
     border-radius: 15px;
     padding: 5px 0 5px 10px;

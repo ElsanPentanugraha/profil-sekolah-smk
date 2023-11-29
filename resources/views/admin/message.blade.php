@@ -13,17 +13,11 @@
                 </ol>
                 <hr>
 
-                @if (Session::has('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ Session::get('message') }}
-                    </div>
-                @endif
-
                 <div class="card mb-4">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <h6 class="m-0 font-weight-bold text-primary d-md-inline">Data Pesan Masuk</h6>
-                            
+
                         </div>
                     </div>
                     <div class="card-body">
@@ -63,7 +57,8 @@
                                                 <form action="/admin/delete-mail/{{ $mail->id }}" method="post">
                                                     @csrf
                                                     @method('delete')
-                                                    <button class="btn btn-danger btn-icon-split btn-sm">
+                                                    <button class="btn btn-danger btn-icon-split btn-sm"
+                                                        onclick="return confirm('Are you sure you want to delete this item?');">
                                                         <span class="icon text-white">
                                                             <i class="fas fa-trash"></i>
                                                         </span>
@@ -71,7 +66,7 @@
                                                     </button>
                                                 </form>
                                             </div>
-                                            
+
                                         </td>
                                     </tr>
                                 @endforeach

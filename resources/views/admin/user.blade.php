@@ -13,11 +13,6 @@
                 </ol>
                 <hr>
 
-                @if (Session::has('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ Session::get('message') }}
-                    </div>
-                @endif
                 <div class="card mb-4">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
@@ -56,10 +51,20 @@
                                                 </span>
                                                 <span class="text text-white">Edit</span>
                                             </a>
-                                            <form action="/admin/delete-user/{{ $user->id }}" method="post">
+
+                                            {{-- <form action="{{ route('admin.delete-user', ['id' => $user->id]) }}" method="post" id="deleteForm">
                                                 @csrf
                                                 @method('delete')
-                                                <button class="btn btn-danger btn-icon-split btn-sm">
+                                                <input type="hidden" name="user_id" id="user_id_input" value="{{ $user->id }}">
+                                                <button type="button" class="btn btn-danger" onclick="confirmDelete('{{ $user->id }}')">Hapus</button>
+                                            </form> --}}
+
+                                            <form action="{{ url('/admin/delete-user', $user->id) }}" method="post">
+                                                @csrf
+                                                @method('delete')
+
+                                                <button class="delete-button btn btn-danger btn-icon-split btn-sm"
+                                                    onclick="return confirm('Are you sure you want to delete this item?');">
                                                     <span class="icon text-white">
                                                         <i class="fas fa-trash"></i>
                                                     </span>
@@ -76,4 +81,56 @@
                 </div>
             </div>
         </main>
+
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <i class="fa-solid fa-circle-exclamation mb-4" style="font-size: 80px; color:#f8c464;"></i>
+                        <h4>Anda yakin ingin menghapus Akun?</h4>
+                        <p>Anda tidak akan dapat mengembalikan ini!</p>
+                    </div>
+                    <div class="modal-footer text-align-center">
+                        <form id="deleteForm" action="/admin/delete-user/{{ $user->id }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button type="button" class="btn btn-primary">Ya, hapus!</button>
+                        </form>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        {{-- <script>
+           
+            function confirmDelete(event, id) {
+                console.log("User ID:", id);
+                event.preventDefault();
+
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Submit the form if the user confirms
+                        document.getElementById('deleteForm').submit();
+                    }
+                });
+            }
+        </script> --}}
+
     @endsection

@@ -6,27 +6,37 @@ use App\Models\Category;
 use App\Models\Information;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminInformationController extends Controller
 {
-    public function index() {
-        $information = Information::with('category')->orderByDesc('created_at')->get();
+    public function index()
+    {
+        $information = Information::with('category')
+            ->orderByDesc('created_at')
+            ->get();
         return view('admin.information', ['informationlist' => $information]);
     }
 
-    public function show($id) {
+    public function show($id)
+    {
         $information = Information::with('category')->findOrFail($id);
         $formattedDate = date('d F Y', strtotime($information->created_at));
 
-        return view('admin.detail-information', ['information' => $information, 'datearticle' => $formattedDate]);
+        return view('admin.detail-information', [
+            'information' => $information,
+            'datearticle' => $formattedDate,
+        ]);
     }
 
-    public function create() {
+    public function create()
+    {
         $category = Category::all();
         return view('admin.add-information', ['categorylist' => $category]);
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $imagename = '';
         if ($request->file('photo')) {
             $extensionimage = $request
@@ -40,25 +50,28 @@ class AdminInformationController extends Controller
         $request['image'] = $imagename;
         $information = Information::Create($request->all());
 
-
         if ($information) {
             $information->category()->attach($request->category_id);
 
-            Session::flash('status', 'success');
-            Session::flash('message', 'Artikel Berhasil di buat!');
+            Alert::success('Berhasil!', 'Artikel Berhasil Diunggah');
         }
 
         return redirect('/admin/information-management');
     }
 
-    public function edit(Request $request, $id) {
+    public function edit(Request $request, $id)
+    {
         $categories = Category::all();
         $information = Information::findOrFail($id);
 
-        return view('admin.edit-information', ['categories' => $categories, 'information' => $information]);
+        return view('admin.edit-information', [
+            'categories' => $categories,
+            'information' => $information,
+        ]);
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         $information = Information::findOrFail($id);
 
         $imagename = '';
@@ -75,24 +88,21 @@ class AdminInformationController extends Controller
         $information->category($id)->sync($request->category_id);
 
         if ($information) {
-
-            Session::flash('status', 'success');
-            Session::flash('message', 'Artikel Berhasil di perbarui!');
+            Alert::success('Berhasil!', 'Artikel Berhasil Diedit');
         }
 
         return redirect('/admin/information-management');
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $information = Information::findOrFail($id);
         $information->category($id)->detach();
         $information->delete();
 
         if ($information) {
-            Session::flash('status', 'success');
-            Session::flash('message', 'Artikel Berhasil di hapus!');
+            Alert::success('Berhasil!', 'Artikel Berhasil Hapus');
+            return redirect('/admin/information-management');
         }
-
-        return redirect('/admin/information-management');
     }
 }

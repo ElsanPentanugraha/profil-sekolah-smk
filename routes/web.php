@@ -36,11 +36,13 @@ Route::get('/major', [MajorController::class, 'index']);
 Route::get('/major/{id}', [MajorController::class, 'show']);
 
 Route::get('/information', [InformationController::class, 'index']);
+Route::post('/filter-by-category', [InformationController::class, 'filterByCategory'])->name('filter.by.category');
 Route::get('/information/announcement', [
     InformationController::class,
     'showAnnouncement',
 ]);
 Route::get('/information/news', [InformationController::class, 'showNews']);
+Route::get('/information/{year?}/{month?}', [InformationController::class, 'showArchive'])->name('information.archive');
 Route::get('/information/article', [
     InformationController::class,
     'showArticle',
@@ -53,7 +55,7 @@ Route::get('/contact', [ContactController::class, 'index']);
 Route::get('/contact/send-mail', [ContactController::class, 'store']);
 
 // Route Login
-Route::get('/secret', [LoginController::class, 'index'])->middleware('guest');
+Route::get('/secret', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/secret/auth', [
     LoginController::class,
     'authenticate',
@@ -197,5 +199,5 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/store-user', [UserController::class, 'store']);
     Route::get('/admin/edit-user/{id}', [UserController::class, 'edit']);
     Route::put('/admin/user-update/{id}', [UserController::class, 'update']);
-    Route::delete('/admin/delete-user/{id}', [UserController::class, 'delete']);
+    Route::delete('/admin/delete-user/{id}', [UserController::class, 'delete'])->name('admin.delete-user');
 });

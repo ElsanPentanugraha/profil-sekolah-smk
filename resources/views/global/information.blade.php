@@ -38,25 +38,30 @@
             </div>
             <div class="col-lg-3 col-md-12">
                 <div class="searchbar-feature">
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <form class="d-flex" action="" method="get">
+                        <input class="form-control me-2" type="search" placeholder="Search" name="keyword" aria-label="Search">
                         <button class="btn btn-search" type="submit">Search</button>
                     </form>
                 </div>
 
-                <div class="filter-posts">
-                    <h3>Filter berdasarkan</h3>
-                    <div class="filter-checks">
-                        @foreach ($categories as $item)
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    {{ $item->name }}
-                                </label>
-                            </div>
-                        @endforeach
+                <form method="post" action="{{ url('filter-by-category') }}" id="filterForm">
+                    @csrf
+                    <div class="filter-posts">
+                        <h3>Filter berdasarkan</h3>
+                        <div class="filter-checks">
+                            @foreach ($categories as $item)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="categories[]"
+                                        value="{{ $item->id }}" id="checkbox{{ $item->id }}">
+                                    <label class="form-check-label" for="checkbox{{ $item->id }}">
+                                        {{ $item->name }}
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
+                        <button type="button" id="applyFilterButton">Apply Filter</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

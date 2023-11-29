@@ -12,11 +12,7 @@
                     <li class="breadcrumb-item active">Kategori</li>
                 </ol>
                 <hr>
-                @if (Session::has('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ Session::get('message') }}
-                    </div>
-                @endif
+
                 <div class="card mb-4">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
@@ -45,7 +41,8 @@
                                         <td>{{ $category->name }}</td>
                                         <td>
                                             <div class="d-flex">
-                                                <a href="/admin/edit-category/{{ $category->id }}" class="btn btn-warning btn-icon-split btn-sm me-2">
+                                                <a href="/admin/edit-category/{{ $category->id }}"
+                                                    class="btn btn-warning btn-icon-split btn-sm me-2">
                                                     <span class="icon text-white">
                                                         <i class="fas fa-edit"></i>
                                                     </span>
@@ -54,7 +51,8 @@
                                                 <form action="/admin/delete-category/{{ $category->id }}" method="post">
                                                     @csrf
                                                     @method('delete')
-                                                    <button class="btn btn-danger btn-icon-split btn-sm ml-2">
+                                                    <button class="btn btn-danger btn-icon-split btn-sm ml-2"
+                                                        onclick="return confirm('Are you sure you want to delete this item?');">
                                                         <span class="icon text-white">
                                                             <i class="fas fa-trash"></i>
                                                         </span>
@@ -63,10 +61,10 @@
                                                 </form>
                                             </div>
                                         </td>
-                                        
-                                        
-                                        
-                                        
+
+
+
+
                                     </tr>
                                 @endforeach
 

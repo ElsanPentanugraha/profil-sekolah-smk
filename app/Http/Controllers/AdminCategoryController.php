@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminCategoryController extends Controller
 {
@@ -21,8 +22,7 @@ class AdminCategoryController extends Controller
     public function store(Request $request) {
         $category = Category::create($request->all());
         if ($category) {
-            Session::flash('status', 'success');
-            Session::flash('message', 'Data Kategori Berhasil Dibuat!');
+            Alert::success('Berhasil!', 'Kategori Berhasil Dibuat');
         }
         return redirect('/admin/category-management');
     }
@@ -36,8 +36,7 @@ class AdminCategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->update($request->all());
         if ($category) {
-            Session::flash('status', 'success');
-            Session::flash('message', 'Data Kontak Berhasil Diupdate!');
+            Alert::success('Berhasil!', 'Kategori Berhasil Diubah');
         }
         return redirect('/admin/category-management');
     }
@@ -46,8 +45,7 @@ class AdminCategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->delete();
         if ($category) {
-            Session::flash('status', 'success');
-            Session::flash('message', 'Data Kontak Berhasil Dihapus!');
+            Alert::success('Berhasil!', 'Kategori Berhasil Diubah');
         }
         return redirect('/admin/category-management');
     }

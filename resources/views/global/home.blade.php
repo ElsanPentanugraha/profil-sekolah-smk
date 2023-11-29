@@ -116,21 +116,30 @@
                 </div>
                 <div class="col-lg-4 col-md-12 px-3">
                     <div class="searchbar-feature">
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <form class="d-flex" action="" method="get">
+                            <input class="form-control me-2" type="search" placeholder="Search" name="keyword"
+                                aria-label="Search">
                             <button class="btn btn-search" type="submit">Search</button>
                         </form>
                     </div>
 
                     {{-- sambutan kepala sekolah bisa ditambahkan --}}
 
+
+                    {{-- buat arsip berdasarkan bulan tahun berjalan --}}
                     <div class="archives mt-4 px-3">
-                        {{-- buat arsip berdasarkan bulan tahun berjalan --}}
                         <h2>Arsip</h2>
-                        <div class="archieve-menu">
-                            <a href="" class="archieve-link my-3">Pengumuman</a>
-                            <a href="" class="archieve-link my-3">Berita</a>
-                            <a href="" class="archieve-link my-3">Artikel</a>
+                        <div class="archive-menu">
+                            @foreach ($archives as $archive)
+                                @php
+                                    $formattedMonth = strftime('%B', mktime(0, 0, 0, $archive['month'], 1, $archive['year']));
+                                @endphp
+
+                                <a href="{{ route('information.archive', ['year' => $archive['year'], 'month' => $archive['month']]) }}"
+                                    class="archive-link my-3">
+                                    {{ $formattedMonth }} {{ $archive['year'] }}
+                                </a>
+                            @endforeach
                         </div>
                     </div>
 

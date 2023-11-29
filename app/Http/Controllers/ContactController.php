@@ -7,6 +7,7 @@ use App\Models\Contact;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ContactController extends Controller
 {
@@ -19,8 +20,7 @@ class ContactController extends Controller
     public function store(Request $request) {
         $mail = Message::create($request->all());
         if ($mail) {
-            Session::flash('status', 'success');
-            Session::flash('message', 'Email sudah terkirim, Terima kasih sudah mengirimkan pesan.');
+            Alert::success('Berhasil!', 'Email sudah terkirim, Terima kasih sudah menghubungi kami');
         }
         return redirect()->back();
     }
