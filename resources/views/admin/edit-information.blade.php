@@ -45,25 +45,48 @@
                                                     <select name="category_id" id="category"
                                                         class="selectpicker form-control">
                                                         <label for="category">Kategori</label>
-                                                        <option value=""></option>
-                                                        @foreach ($categories as $item)
-                                                            <option value="{{ $item->id }}">{{ $item->name }}
-                                                            </option>
+                                                        @foreach ($information->category as $item)
+                                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                            @if ($item->id === 1)
+                                                                <option value="2">
+                                                                    {{ $item->where('id', 2)->first()->name }}
+                                                                </option>
+                                                                <option value="3">
+                                                                    {{ $item->where('id', 3)->first()->name }}
+                                                                </option>
+                                                            @elseif ($item->id === 2)
+                                                                <option value="1">
+                                                                    {{ $item->where('id', 1)->first()->name }}
+                                                                </option>
+                                                                <option value="3">
+                                                                    {{ $item->where('id', 3)->first()->name }}
+                                                                </option>
+                                                            @elseif ($item->id === 3)
+                                                                <option value="1">
+                                                                    {{ $item->where('id', 1)->first()->name }}
+                                                                </option>
+                                                                <option value="2">
+                                                                    {{ $item->where('id', 2)->first()->name }}
+                                                                </option>
+                                                            @endif
                                                         @endforeach
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-floating mb-3">
+                                        <div class="form-floating mb-4">
                                             <div class="input-group">
                                                 <input type="file" class="form-control" id="photo" name="photo"
-                                                    aria-label="Upload" onchange="displayFileName(this)"> 
+                                                    aria-label="Upload" onchange="displayFileName(this)">
                                             </div>
+                                            @if ($information->image)
+                                                <small class="px-2 mt-3">File saat ini: {{ $information->image }}</small>
+                                            @endif
                                         </div>
                                         <div class="form-floating mb-3">
                                             <textarea cols="30" rows="20" class="form-control" id="description" type="text" name='description'
                                                 placeholder="Deskripsi">{!! $information->description !!}</textarea>
-                                            
+
                                         </div>
                                         <div class="mt-4 mb-0">
                                             <div class="d-grid">

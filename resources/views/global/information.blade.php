@@ -12,7 +12,7 @@
                         <div class="card information-post-items mb-3 ">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="{{ asset('storage/image/' . $information->image) }}"
+                                    <img src="{{ asset('storage/postimage/' . $information->image) }}"
                                         class="img-fluid rounded-start" alt="">
                                 </div>
                                 <div class="col-md-8">

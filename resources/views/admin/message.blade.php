@@ -40,42 +40,45 @@
                                         <td>{!! Str::limit($mail->mail_message, 50) !!}</td>
                                         <td>
                                             <div class="d-flex">
-                                                <a href="/admin/send-replymail/{{ $mail->id }}"
-                                                    class="btn btn-primary btn-icon-split btn-sm me-2">
-                                                    <span class="icon text-white">
-                                                        <i class="fas fa-reply"></i>
-                                                    </span>
-                                                    <span class="text text-white">Reply</span>
-                                                </a>
-                                                <a href="/admin/detail-mail/{{ $mail->id }}"
-                                                    class="btn btn-info btn-icon-split btn-sm me-2">
-                                                    <span class="icon text-white">
-                                                        <i class="fas fa-circle-info"></i>
-                                                    </span>
-                                                    <span class="text text-white">Detail</span>
-                                                </a>
-                                                <form action="/admin/delete-mail/{{ $mail->id }}" method="post">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button class="btn btn-danger btn-icon-split btn-sm"
-                                                        onclick="return confirm('Are you sure you want to delete this item?');">
+                                                <div>
+                                                    <a href="/admin/send-replymail/{{ $mail->id }}"
+                                                        class="btn btn-primary btn-icon-split btn-sm me-2">
                                                         <span class="icon text-white">
-                                                            <i class="fas fa-trash"></i>
+                                                            <i class="fas fa-reply"></i>
                                                         </span>
-                                                        <span class="text text-white">Hapus</span>
-                                                    </button>
-                                                </form>
+                                                        <span class="text text-white">Reply</span>
+                                                    </a>
+                                                </div>
+                                                <div>
+                                                    <a href="/admin/detail-mail/{{ $mail->id }}"
+                                                        class="btn btn-info btn-icon-split btn-sm me-2">
+                                                        <span class="icon text-white">
+                                                            <i class="fas fa-circle-info"></i>
+                                                        </span>
+                                                        <span class="text text-white">Detail</span>
+                                                    </a>
+                                                </div>
+                                                <div>
+                                                    <form action="/admin/delete-mail/{{ $mail->id }}" method="post">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="btn btn-danger btn-icon-split btn-sm"
+                                                            onclick="return confirm('Are you sure you want to delete this item?');">
+                                                            <span class="icon text-white">
+                                                                <i class="fas fa-trash"></i>
+                                                            </span>
+                                                            <span class="text text-white">Hapus</span>
+                                                        </button>
+                                                    </form>
+                                                </div>
                                             </div>
-
                                         </td>
                                     </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
                     </div>
                 </div>
-
             </div>
         </main>
     @endsection

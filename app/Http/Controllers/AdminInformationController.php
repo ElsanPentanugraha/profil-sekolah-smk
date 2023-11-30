@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Information;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminInformationController extends Controller
@@ -44,7 +45,7 @@ class AdminInformationController extends Controller
                 ->getClientOriginalExtension();
             $imagename =
                 $request->name . '-' . now()->timestamp . '.' . $extensionimage;
-            $request->file('photo')->storeAS('image', $imagename);
+            $request->file('photo')->storeAS('postimage', $imagename);
         }
 
         $request['image'] = $imagename;
@@ -81,9 +82,13 @@ class AdminInformationController extends Controller
                 ->getClientOriginalExtension();
             $imagename =
                 $request->name . '-' . now()->timestamp . '.' . $extensionimage;
-            $request->file('photo')->storeAS('image', $imagename);
+            $request->file('photo')->storeAS('postimage', $imagename);
+            $request['image'] = $imagename;
+        } else {
+            $imgname = $information->image;
+            $request['image'] = $imgname;
         }
-        $request['image'] = $imagename;
+
         $information->update($request->all());
         $information->category($id)->sync($request->category_id);
 
@@ -98,6 +103,8 @@ class AdminInformationController extends Controller
     {
         $information = Information::findOrFail($id);
         $information->category($id)->detach();
+
+        Storage::delete('public/storage/postimage/' . $information->image);
         $information->delete();
 
         if ($information) {

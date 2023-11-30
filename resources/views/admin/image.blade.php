@@ -45,7 +45,7 @@
                         <hr>
                         <h4 class="text-center font-weight-light my-4">Galeri Kegiatan</h4>
                         @foreach ($photos as $item)
-                            <div class="col-md-4">
+                            <div class="col-md-4 mb-4">
                                 <div class="card">
                                     <img src="{{ asset('storage/gallery/' . $item->image) }}" class="card-img-top"
                                         alt="">

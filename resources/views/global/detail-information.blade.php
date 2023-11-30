@@ -7,7 +7,7 @@
         <div class="container mt-5">
             <div class="text-center information-item">
                 <h3 class="mb-3">{{ $information->name }}</h3>
-                <img src="{{ asset('storage/image/' . $information->image) }}" class="img-fluid" alt="">
+                <img src="{{ asset('storage/postimage/' . $information->image) }}" class="img-fluid" alt="">
             </div>
             <div class="text-justify mt-3">
                 {!! $information->description !!}

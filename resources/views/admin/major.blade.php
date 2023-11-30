@@ -43,33 +43,38 @@
                                                 style="width: 10rem;" alt=""></td>
                                         <td>
                                             <div class="d-flex">
-                                                <a href="/admin/detail-major/{{ $major->id }}"
-                                                    class="btn btn-info btn-icon-split btn-sm me-2">
-                                                    <span class="icon text-white">
-                                                        <i class="fas fa-circle-info"></i>
-                                                    </span>
-                                                    <span class="text text-white">Detail</span>
-                                                </a>
-                                                <a href="/admin/edit-major/{{ $major->id }}"
-                                                    class="btn btn-warning btn-icon-split btn-sm me-2">
-                                                    <span class="icon text-white">
-                                                        <i class="fas fa-edit"></i>
-                                                    </span>
-                                                    <span class="text text-white">Edit</span>
-                                                </a>
-                                                <form action="/admin/delete-major/{{ $major->id }}" method="post">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button class="btn btn-danger btn-icon-split btn-sm"
-                                                        onclick="return confirm('Are you sure you want to delete this item?');">
+                                                <div>
+                                                    <a href="/admin/detail-major/{{ $major->id }}"
+                                                        class="btn btn-info btn-icon-split btn-sm me-2">
                                                         <span class="icon text-white">
-                                                            <i class="fas fa-trash"></i>
+                                                            <i class="fas fa-circle-info"></i>
                                                         </span>
-                                                        <span class="text text-white">Hapus</span>
-                                                    </button>
-                                                </form>
+                                                        <span class="text text-white">Detail</span>
+                                                    </a>
+                                                </div>
+                                                <div>
+                                                    <a href="/admin/edit-major/{{ $major->id }}"
+                                                        class="btn btn-warning btn-icon-split btn-sm me-2">
+                                                        <span class="icon text-white">
+                                                            <i class="fas fa-edit"></i>
+                                                        </span>
+                                                        <span class="text text-white">Edit</span>
+                                                    </a>
+                                                </div>
+                                                <div>
+                                                    <form action="/admin/delete-major/{{ $major->id }}" method="post">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="btn btn-danger btn-icon-split btn-sm"
+                                                            onclick="return confirm('Are you sure you want to delete this item?');">
+                                                            <span class="icon text-white">
+                                                                <i class="fas fa-trash"></i>
+                                                            </span>
+                                                            <span class="text text-white">Hapus</span>
+                                                        </button>
+                                                    </form>
+                                                </div>
                                             </div>
-
                                         </td>
                                     </tr>
                                 @endforeach

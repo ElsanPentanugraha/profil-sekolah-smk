@@ -62,7 +62,7 @@
         <div class="container mt-5">
             <div class="email-forms">
                 <h2>Hubungi Kami</h2>
-                
+
                 <form action="contact/send-mail">
                     @csrf
                     <div class="row">

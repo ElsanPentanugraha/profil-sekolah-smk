@@ -9,21 +9,25 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminMajorController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $major = Major::all();
         return view('admin.major', ['majorlist' => $major]);
     }
 
-    public function show($id) {
+    public function show($id)
+    {
         $major = Major::findOrFail($id);
         return view('admin.detail-major', ['major' => $major]);
     }
 
-    public function create() {
+    public function create()
+    {
         return view('admin.add-major');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $imagename = '';
         if ($request->file('photo')) {
             $extensionimage = $request
@@ -38,18 +42,23 @@ class AdminMajorController extends Controller
         $major = Major::create($request->all());
 
         if ($major) {
-            Alert::success('Berhasil!', 'Data Program Keahlian Berhasil Ditambahkan');
+            Alert::success(
+                'Berhasil!',
+                'Data Program Keahlian Berhasil Ditambahkan'
+            );
         }
 
         return redirect('/admin/major-management');
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $major = Major::findOrFail($id);
         return view('admin.edit-major', ['major' => $major]);
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         $major = Major::findOrFail($id);
 
         $imagename = '';
@@ -60,25 +69,35 @@ class AdminMajorController extends Controller
             $imagename =
                 $request->name . '-' . now()->timestamp . '.' . $extensionimage;
             $request->file('photo')->storeAS('majors', $imagename);
+            $request['image'] = $imagename;
+        } else {
+            $imgname = $major->image;
+            $request['image'] = $imgname;
         }
 
-        $request['image'] = $imagename;
         $major->update($request->all());
 
         if ($major) {
-            Alert::success('Berhasil!', 'Data Program Keahlian Berhasil Diubah');
+            Alert::success(
+                'Berhasil!',
+                'Data Program Keahlian Berhasil Diubah'
+            );
         }
 
         return redirect('/admin/major-management');
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $major = Major::findOrFail($id);
-        
 
         if ($major) {
+            Storage::delete('public/storage/majors/' . $major->image);
             $major->delete();
-            Alert::success('Berhasil!', 'Dara Program Keahlian Berhasil Dihapus');
+            Alert::success(
+                'Berhasil!',
+                'Dara Program Keahlian Berhasil Dihapus'
+            );
             return redirect('/admin/major-management');
         }
     }

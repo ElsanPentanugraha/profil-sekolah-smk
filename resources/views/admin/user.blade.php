@@ -31,7 +31,6 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Username</th>
-                                    <th>Password</th>
                                     <th>Email</th>
                                     <th>Action</th>
                                 </tr>
@@ -41,36 +40,34 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $user->name }}</td>
-                                        <td>{{ $user->password }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>
-                                            <a href="/admin/edit-user/{{ $user->id }}"
-                                                class="btn btn-warning btn-icon-split btn-sm">
-                                                <span class="icon text-white">
-                                                    <i class="fas fa-edit"></i>
-                                                </span>
-                                                <span class="text text-white">Edit</span>
-                                            </a>
+                                            <div class="d-flex">
+                                                <div id="action-button">
+                                                    <a href="/admin/edit-user/{{ $user->id }}"
+                                                        class="btn btn-warning btn-icon-split btn-sm">
+                                                        <span class="icon text-white">
+                                                            <i class="fas fa-edit"></i>
+                                                        </span>
+                                                        <span class="text text-white">Edit</span>
+                                                    </a>
+                                                </div>
+                                                <div id="action-button">
+                                                    <form action="{{ url('/admin/delete-user', $user->id) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        @method('delete')
 
-                                            {{-- <form action="{{ route('admin.delete-user', ['id' => $user->id]) }}" method="post" id="deleteForm">
-                                                @csrf
-                                                @method('delete')
-                                                <input type="hidden" name="user_id" id="user_id_input" value="{{ $user->id }}">
-                                                <button type="button" class="btn btn-danger" onclick="confirmDelete('{{ $user->id }}')">Hapus</button>
-                                            </form> --}}
-
-                                            <form action="{{ url('/admin/delete-user', $user->id) }}" method="post">
-                                                @csrf
-                                                @method('delete')
-
-                                                <button class="delete-button btn btn-danger btn-icon-split btn-sm"
-                                                    onclick="return confirm('Are you sure you want to delete this item?');">
-                                                    <span class="icon text-white">
-                                                        <i class="fas fa-trash"></i>
-                                                    </span>
-                                                    <span class="text text-white">Hapus</span>
-                                                </button>
-                                            </form>
+                                                        <button class="delete-button btn btn-danger btn-icon-split btn-sm"
+                                                            onclick="return confirm('Are you sure you want to delete this item?');">
+                                                            <span class="icon text-white">
+                                                                <i class="fas fa-trash"></i>
+                                                            </span>
+                                                            <span class="text text-white">Hapus</span>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

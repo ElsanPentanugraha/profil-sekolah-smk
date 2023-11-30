@@ -30,7 +30,7 @@
                             <h2>{{ $information->name }}</h2>
                         </div>
                         <div class="d-flex justify-content-center mt-3">
-                            <img src="{{ asset('storage/image/' . $information->image) }}" class="img-fluid"
+                            <img src="{{ asset('storage/postimage/' . $information->image) }}" class="img-fluid"
                                 style="max-width: 1100px; max-height: 850px;" alt="">
                         </div>
 
