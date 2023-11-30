@@ -14,5 +14,8 @@ class Contact extends Model
         'telephone',
         'email',
         'website',
+        'facebook',
+        'instagram',
+        'youtube',
     ];
 }

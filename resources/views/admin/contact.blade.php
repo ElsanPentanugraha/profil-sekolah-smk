@@ -59,17 +59,17 @@
                                         <li>
                                             <i class="fa-brands fa-facebook"></i>
                                             <strong>Facebook :</strong>
-                                            <p>smkn</p>
+                                            <p>{{ $contact->facebook }}</p>
                                         </li>
                                         <li>
                                             <i class="fa-brands fa-instagram"></i>
                                             <strong>Instagram :</strong>
-                                            <p>smkn</p>
+                                            <p>{{ $contact->instagram }}</p>
                                         </li>
                                         <li>
                                             <i class="fa-brands fa-youtube"></i>
                                             <strong>Youtube :</strong>
-                                            <p>smkn</p>
+                                            <p>{{ $contact->youtube }}</p>
                                         </li>
                                     </ul>
                                 </div>
