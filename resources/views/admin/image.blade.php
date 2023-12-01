@@ -30,7 +30,7 @@
                                         </div>
                                         <div class="form-group mb-3">
                                             <label for="photo">Pilih Gambar (Multiple)</label>
-                                            <input type="file" class="form-control" id="photo" name="photo"
+                                            <input type="file" class="form-control" id="photo" name="photo[]"
                                                 accept="image/*" multiple>
                                         </div>
 
@@ -44,30 +44,37 @@
                     <div class="row justify-content-center mt-5">
                         <hr>
                         <h4 class="text-center font-weight-light my-4">Galeri Kegiatan</h4>
+
                         @foreach ($photos as $item)
-                            <div class="col-md-4 mb-4">
-                                <div class="card">
-                                    <img src="{{ asset('storage/gallery/' . $item->image) }}" class="card-img-top"
-                                        alt="">
-                                    <div class="card-body d-flex justify-content-between">
-                                        <p class="card-text">{{ $item->name }}</p>
-                                        <form action="/delete-photo/{{ $item->id }}" method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button class="btn btn-danger btn-icon-split btn-sm"
-                                                onclick="return confirm('Are you sure you want to delete this item?');">
-                                                <span class="icon text-white">
-                                                    <i class="fas fa-trash"></i>
-                                                </span>
-                                                <span class="text text-white">Hapus</span>
-                                            </button>
-                                        </form>
+                            @foreach (explode(',', $item->image) as $imageName)
+                                <div class="col-md-4 mb-4">
+                                    <div class="card">
+                                        <img src="{{ asset('storage/gallery/' . $imageName) }}" class="card-img-top"
+                                            alt="">
+                                        <div class="card-body d-flex justify-content-between">
+                                            <p class="card-text">{{ $item->name }}</p>
+                                            <form action="/delete-photo/{{ $item->id }}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <input type="hidden" name="deleteImage" value="{{ $imageName }}">
+                                                <button type="submit" class="btn btn-danger btn-icon-split btn-sm"
+                                                    onclick="return confirm('Are you sure you want to delete this image?');">
+                                                    <span class="icon text-white">
+                                                        <i class="fas fa-trash"></i>
+                                                    </span>
+                                                    <span class="text text-white">Hapus</span>
+                                                </button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
                         @endforeach
 
+
                     </div>
+
+
                 </div>
             </div>
         </main>

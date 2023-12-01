@@ -23,21 +23,31 @@ class AdminGalleryPhotoController extends Controller
 
     public function store(Request $request)
     {
-        $imagename = '';
-        if ($request->file('photo')) {
-            $extensionimage = $request
-                ->file('photo')
-                ->getClientOriginalExtension();
-            $imagename =
-                $request->name . '-' . now()->timestamp . '.' . $extensionimage;
-            $request->file('photo')->storeAS('gallery', $imagename);
+        $imageNames = [];
+
+        if ($request->hasFile('photo')) {
+            foreach ($request->file('photo') as $photo) {
+                $extension = $photo->getClientOriginalExtension();
+
+                // Gunakan microtime untuk menambahkan presisi timestamp
+                $timestamp = now()->timestamp . '_' . microtime(true);
+
+                $imageName =
+                    $request->name . '-' . $timestamp . '.' . $extension;
+                $photo->storeAs('gallery', $imageName);
+                $imageNames[] = $imageName;
+            }
         }
 
-        $request['image'] = $imagename;
-        $photos = PhotoGallery::Create($request->all());
+        $photos = new PhotoGallery([
+            'name' => $request->name,
+            'image' => implode(',', $imageNames), // or adjust accordingly
+        ]);
+
+        $photos->save();
 
         if ($photos) {
-            Alert::success('Berhasil!', 'Gambar Berhasil Diunggah');
+            Alert::success('Berhasil!', 'Gambar Berhasil Diunggah ke Galeri');
         }
 
         return redirect()->back();
@@ -46,12 +56,32 @@ class AdminGalleryPhotoController extends Controller
     public function delete($id)
     {
         $photo = PhotoGallery::findOrFail($id);
-        $photo->delete();
 
-        if ($photo) {
-            Alert::success('Berhasil!', 'Gambar Berhasil Hapus dari Galeri');
+        $selectedImage = request('deleteImage');
 
-            return redirect()->back();
+        $newImages = array_diff(explode(',', $photo->image), [$selectedImage]);
+
+        if (count($newImages) > 0) {
+            $photo->image = implode(',', $newImages);
+            $photo->save();
+
+            if ($photo) {
+                Alert::success(
+                    'Berhasil!',
+                    'Gambar Berhasil Hapus dari Galeri'
+                );
+            }
+        } else {
+            $photo->delete();
+
+            if ($photo) {
+                Alert::success(
+                    'Berhasil!',
+                    'Data Berhasil Dihapus dari Galeri'
+                );
+            }
         }
+
+        return redirect()->back();
     }
 }
