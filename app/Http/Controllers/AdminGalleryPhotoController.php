@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PhotoGallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminGalleryPhotoController extends Controller
@@ -58,8 +59,9 @@ class AdminGalleryPhotoController extends Controller
         $photo = PhotoGallery::findOrFail($id);
 
         $selectedImage = request('deleteImage');
-
+        Storage::delete('gallery/'.basename($selectedImage));
         $newImages = array_diff(explode(',', $photo->image), [$selectedImage]);
+        
 
         if (count($newImages) > 0) {
             $photo->image = implode(',', $newImages);
@@ -72,6 +74,7 @@ class AdminGalleryPhotoController extends Controller
                 );
             }
         } else {
+            Storage::delete('gallery/'.basename($photo->image));
             $photo->delete();
 
             if ($photo) {

@@ -77,6 +77,7 @@ class AdminInformationController extends Controller
 
         $imagename = '';
         if ($request->file('photo')) {
+            Storage::delete('postimage/'.basename($information->image));
             $extensionimage = $request
                 ->file('photo')
                 ->getClientOriginalExtension();
@@ -104,7 +105,7 @@ class AdminInformationController extends Controller
         $information = Information::findOrFail($id);
         $information->category($id)->detach();
 
-        Storage::delete('public/storage/postimage/' . $information->image);
+        Storage::delete('postimage/'.basename($information->image));
         $information->delete();
 
         if ($information) {

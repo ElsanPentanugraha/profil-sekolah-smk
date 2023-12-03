@@ -63,6 +63,7 @@ class AdminMajorController extends Controller
 
         $imagename = '';
         if ($request->file('photo')) {
+            Storage::delete('majors/'.basename($major->image));
             $extensionimage = $request
                 ->file('photo')
                 ->getClientOriginalExtension();
@@ -92,7 +93,7 @@ class AdminMajorController extends Controller
         $major = Major::findOrFail($id);
 
         if ($major) {
-            Storage::delete('public/storage/majors/' . $major->image);
+            Storage::delete('majors/'.basename($major->image));
             $major->delete();
             Alert::success(
                 'Berhasil!',
